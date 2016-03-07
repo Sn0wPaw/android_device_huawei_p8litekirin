@@ -16,11 +16,7 @@ PRODUCT_PACKAGES += \
 	libsrec_jni \
 	LiveWallpapers \
 	LiveWallpapersPicker \
-	make_ext4fs \
-	minivold \
 	runtime_libart_default \
-	setup_fs \
-	uim-sysfs \
 	UsbSpeedSwitch \
 	VisualizationWallpapers
 
@@ -44,6 +40,14 @@ PRODUCT_COPY_FILES := \
 
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
+
+# File System
+PRODUCT_PACKAGES := \
+	e2fsck \
+	make_ext4fs \
+	minivold \
+	setup_fs \
+	uim-sysfs \
 
 # HiSilicon 6210 Packages
 PRODUCT_PACKAGES := \
