@@ -64,3 +64,19 @@ TARGET_PROVIDES_INIT_RC := true
 # Recovery
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
+
+# Connectivity - Wi-Fi
+BOARD_HAVE_HISI_WIFI                := true
+BOARD_WLAN_DEVICE                   := bcmdhd
+BOARD_WLAN_DEVICE_REV               := bcm4343s
+WPA_SUPPLICANT_VERSION              := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER         := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB    := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER                := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB           := lib_driver_cmd_bcmdhd
+WIFI_DRIVER_MODULE_NAME             := "dhd"
+WIFI_DRIVER_MODULE_PATH             := "/system/lib/modules/dhd.ko"
+WIFI_DRIVER_FW_PATH_AP              := "/vendor/firmware/fw_bcm4343s_apsta_hw.bin"
+WIFI_DRIVER_FW_PATH_P2P             := "/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
+WIFI_DRIVER_FW_PATH_STA             := "/vendor/firmware/fw_bcm4343s_test_hw_apsta.bin"
+WIFI_BAND                           := 802_11_ABG
