@@ -5,3 +5,4 @@
 /misc		emmc	/dev/block/platform/hi_mci.0/by-name/misc   
 /recovery	emmc	/dev/block/platform/hi_mci.0/by-name/recovery 
 /system		ext4	/dev/block/platform/hi_mci.0/by-name/system
+
