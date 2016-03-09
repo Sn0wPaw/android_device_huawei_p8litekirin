@@ -124,6 +124,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/nfc/lib64/libnfc-nci.so:system/lib64/libnfc-nci.so \
 	$(LOCAL_PATH)/nfc/lib64/libnfc_nci_jni.so:system/lib64/libnfc_nci_jni.so \
 	$(LOCAL_PATH)/nfc/lib64/libnfc_ndef.so:system/lib64/libnfc_ndef.so \
+	$(LOCAL_PATH)/nfc/lib64/hw/nfc_nci.pn54x.default.so:system/lib64/hw/nfc_nci.pn54x.default.so \
     	$(LOCAL_PATH)/nfc/libnfc-brcm-alice.conf:system/etc/libnfc-brcm-alice.conf \
     	$(LOCAL_PATH)/nfc/libnfc-nxp-alice.conf:system/etc/libnfc-nxp-alice.conf 
 
