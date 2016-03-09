@@ -1,38 +1,39 @@
 # Android Open Source Base System
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, build/target/product/full.mk)
 
-# Android Packages
-PRODUCT_PACKAGES += \
-	audio.a2dp.default \
-	audio.r_submix.default \
-	audio.usb.default \
-	com.android.future.usb.accessory \
-	gatord \
-	hwclock \
-	iontest \
-	ion-unit-tests \
-	libbt-vendor \
-	libc2dcolorconvert \
-	libdashplayer \
-	libion \
-	librs_jni \
-	libsrec_jni \
-	LiveWallpapers \
-	LiveWallpapersPicker \
-	runtime_libart_default \
-	scp \
-	sftp \
-	ssh \
-	ssh-keygen \
-	start-ssh \
-	sshd_config \
-	sshd \
-	uim wpa_supplicant \
-	UsbSpeedSwitch \
-	VisualizationWallpapers
+
+# Set custom settings
+#DEVICE_PACKAGE_OVERLAYS := device/HUAWEI/hi6210sft/overlay
+
+# Add openssh support for remote debugging and job submission
+PRODUCT_PACKAGES += ssh sftp scp sshd ssh-keygen sshd_config start-ssh uim wpa_supplicant
+
+# Build and run only ART
+PRODUCT_RUNTIMES := runtime_libart_default
+
+# Build BT a2dp audio HAL
+PRODUCT_PACKAGES += audio.a2dp.default
+
+# Needed to sync the system clock with the RTC clock
+PRODUCT_PACKAGES += hwclock
+
+# Include USB speed switch App
+PRODUCT_PACKAGES += UsbSpeedSwitch
+
+# Build libion for new double-buffering HDLCD driver
+PRODUCT_PACKAGES += libion
+
+# Build gatord daemon for DS-5/Streamline
+PRODUCT_PACKAGES += gatord
+
+# Build gralloc for Juno
+PRODUCT_PACKAGES += gralloc.hi6210sft
+
+# Include ION tests
+PRODUCT_PACKAGES += iontest \
+                    ion-unit-tests
+
 
 # AAPT Settings
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
@@ -61,16 +62,16 @@ PRODUCT_COPY_FILES += \
 # Chromium 
 PRODUCT_COPY_FILES := \
 	$(LOCAL_PATH)/chromium/libwebviewchromium.so:system/lib/libwebviewchromium.so
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
 
-# File System
+# Filesystem management tools
 PRODUCT_PACKAGES += \
-	e2fsck \
-	make_ext4fs \
-	minivold \
-	setup_fs 
+    setup_fs
 
 # HiSilicon 6210 Packages
 PRODUCT_PACKAGES += \
@@ -84,7 +85,7 @@ PRODUCT_PACKAGES += \
 	power.hi6210sft \
 	sensors.hi6210sft
 
-# Kernel, My Own Cannabis :D 
+#  Kernel, My Own Cannabis :D 
 # ifeq ($(TARGET_PREBUILT_KERNEL),)
 # 	LOCAL_KERNEL := device/huawei/hi6210sft/kernel
 # else
@@ -158,66 +159,77 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# Ramdisk
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/ramdisk/sbin/adbd:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/check_root:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/e2fsck_s:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/emmc_partation:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/hdbd:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/healthd:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/kmsgcat:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/logctl_service:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/ntfs-3gd:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/ueventd:root/sbin/ \
-	$(LOCAL_PATH)/ramdisk/sbin/watchdogd:root/sbin/ \
+##Ramdisk stuff
+PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
+	$(LOCAL_PATH)/ramdisk/sbin/adbd:root/sbin/adbd \
+	$(LOCAL_PATH)/ramdisk/sbin/adbd--:root/sbin/adbd-- \
+	$(LOCAL_PATH)/ramdisk/sbin/check_root:root/sbin/check_root \
+	$(LOCAL_PATH)/ramdisk/sbin/e2fsck_s:root/sbin/e2fsck_s \
+	$(LOCAL_PATH)/ramdisk/sbin/emmc_partation:root/sbin/emmc_partation \
+	$(LOCAL_PATH)/ramdisk/sbin/hdbd:root/sbin/hdbd \
+	$(LOCAL_PATH)/ramdisk/sbin/healthd:root/sbin/healthd \
+	$(LOCAL_PATH)/ramdisk/sbin/kmsgcat:root/sbin/kmsgcat \
+	$(LOCAL_PATH)/ramdisk/sbin/logctl_service:root/sbin/logctl_service \
+	$(LOCAL_PATH)/ramdisk/sbin/ntfs-3gd:root/sbin/ntfs-3gd \
+	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
+	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/teecd \
+	$(LOCAL_PATH)/ramdisk/sbin/ueventd:root/sbin/ueventd \
+	$(LOCAL_PATH)/ramdisk/sbin/watchdogd:root/sbin/watchdogd \
 	$(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
-	$(LOCAL_PATH)/ramdisk/init:root/init \
-	$(LOCAL_PATH)/ramdisk/init.5801.rc:root/init.5801.rc \
-	$(LOCAL_PATH)/ramdisk/init.6165.rc:root/init.6165.rc \
-	$(LOCAL_PATH)/ramdisk/init.10106.rc:root/init.10106.rc \
-	$(LOCAL_PATH)/ramdisk/init.51054.rc:root/init.51054.rc \
-	$(LOCAL_PATH)/ramdisk/init.102173.rc:root/init.102173.rc \
-	$(LOCAL_PATH)/ramdisk/init.142782.rc:root/init.142782.rc \
-	$(LOCAL_PATH)/ramdisk/init.audio.rc:root/init.audio.rc \
-	$(LOCAL_PATH)/ramdisk/init.chip.usb.rc:root/init.chip.usb.rc \
-	$(LOCAL_PATH)/ramdisk/init.connectivity.bcm43xx.rc:root/init.connectivity.bcm43xx.rc \
-	$(LOCAL_PATH)/ramdisk/init.connectivity.hi110x.rc:root/init.connectivity.hi110x.rc \
-	$(LOCAL_PATH)/ramdisk/init.connectivity.rc:root/init.connectivity.rc \
-	$(LOCAL_PATH)/ramdisk/init.device.rc:root/init.device.rc \
-	$(LOCAL_PATH)/ramdisk/init.environ.rc:root/init.environ.rc \
-	$(LOCAL_PATH)/ramdisk/init.extmodem.rc:root/init.extmodem.rc \
 	$(LOCAL_PATH)/ramdisk/init.hi6210sft.rc:root/init.hi6210sft.rc \
-	$(LOCAL_PATH)/ramdisk/init.hisi.rc:root/init.hisi.rc \
-	$(LOCAL_PATH)/ramdisk/init.manufacture.rc:root/init.manufacture.rc \
-	$(LOCAL_PATH)/ramdisk/init.performance.rc:root/init.performance.rc \
-	$(LOCAL_PATH)/ramdisk/init.platform.rc:root/init.platform.rc \
-	$(LOCAL_PATH)/ramdisk/init.protocol.rc:root/init.protocol.rc \
-	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
-	$(LOCAL_PATH)/ramdisk/init.recovery.hi110x.rc:root/init.recovery.hi110x.rc \
-	$(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc \
-	$(LOCAL_PATH)/ramdisk/init.tee.rc:root/init.tee.rc \
-	$(LOCAL_PATH)/ramdisk/init.trace.rc:root/init.trace.rc \
-	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
-	$(LOCAL_PATH)/ramdisk/init.zygote32.rc:root/init.zygote32.rc \
-	$(LOCAL_PATH)/ramdisk/init.zygote64_32.rc:root/init.zygote64_32.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.5801.rc:root/ueventd.5801.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.6165.rc:root/ueventd.6165.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.10106.rc:root/ueventd.10106.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.51054.rc:root/ueventd.51054.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.102173.rc:root/ueventd.102173.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.142782.rc:root/ueventd.142782.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc
+	$(LOCAL_PATH)/ramdisk/init:root/init\
+	$(LOCAL_PATH)/ramdisk/init.5801.rc:root/init.5801.rc\
+	$(LOCAL_PATH)/ramdisk/init.6165.rc:root/init.6165.rc\
+	$(LOCAL_PATH)/ramdisk/init.10106.rc:root/init.10106.rc\
+	$(LOCAL_PATH)/ramdisk/init.51054.rc:root/init.51054.rc\
+	$(LOCAL_PATH)/ramdisk/init.102173.rc:root/init.102173.rc\
+	$(LOCAL_PATH)/ramdisk/init.142782.rc:root/init.142782.rc\
+	$(LOCAL_PATH)/ramdisk/init.audio.rc:root/init.audio.rc\
+	$(LOCAL_PATH)/ramdisk/init.chip.usb.rc:root/init.chip.usb.rc\
+	$(LOCAL_PATH)/ramdisk/init.connectivity.bcm43xx.rc:root/init.connectivity.bcm43xx.rc\
+	$(LOCAL_PATH)/ramdisk/init.connectivity.hi110x.rc:root/init.connectivity.hi110x.rc\
+	$(LOCAL_PATH)/ramdisk/init.connectivity.rc:root/init.connectivity.rc\
+	$(LOCAL_PATH)/ramdisk/init.device.rc:root/init.device.rc\
+	$(LOCAL_PATH)/ramdisk/init.extmodem.rc:root/init.extmodem.rc\
+	$(LOCAL_PATH)/ramdisk/init.hisi.rc:root/init.hisi.rc\
+	$(LOCAL_PATH)/ramdisk/init.manufacture.rc:root/init.manufacture.rc\
+	$(LOCAL_PATH)/ramdisk/init.performance.rc:root/init.performance.rc\
+	$(LOCAL_PATH)/ramdisk/init.platform.rc:root/init.platform.rc\
+	$(LOCAL_PATH)/ramdisk/init.protocol.rc:root/init.protocol.rc\
+	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc\
+	$(LOCAL_PATH)/ramdisk/init.recovery.hi110x.rc:root/init.recovery.hi110x.rc\
+	$(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc\
+	$(LOCAL_PATH)/ramdisk/init.tee.rc:root/init.tee.rc\
+	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc\
+	$(LOCAL_PATH)/ramdisk/init.zygote64_32.rc:root/init.zygote64_32.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.5801.rc:root/ueventd.5801.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.6165.rc:root/ueventd.6165.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.10106.rc:root/ueventd.10106.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.51054.rc:root/ueventd.51054.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.102173.rc:root/ueventd.102173.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.142782.rc:root/ueventd.142782.rc\
+	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc)
 
 # Sepolicy Configuration
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/sepolicy/file_contexts:root/file_contexts \
-	$(LOCAL_PATH)/sepolicy/property_contexts:root/property_contexts \
-	$(LOCAL_PATH)/sepolicy/seapp_contexts:root/seapp_contexts \
-	$(LOCAL_PATH)/sepolicy/service_contexts:root/service_contexts 
+  	$(LOCAL_PATH)/sepolicy/file_contexts:root/file_contexts \
+  	$(LOCAL_PATH)/sepolicy/property_contexts:root/property_contexts \
+  	$(LOCAL_PATH)/sepolicy/seapp_contexts:root/seapp_contexts \
+  	$(LOCAL_PATH)/sepolicy/selinux_version:root/selinux_version \
+  	$(LOCAL_PATH)/sepolicy/sepolicy:root/sepolicy \
+  	$(LOCAL_PATH)/sepolicy/service_contexts:root/service_contexts
+ 
+# Set zygote config
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
+
+PRODUCT_PROPERTY_OVERRIDES += \
+         debug.sf.no_hw_vsync=1 \
+         ro.secure=0 \
+         ro.adb.secure=0
+
+PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := cm_hi6210sft
