@@ -6,13 +6,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Audio
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio/audio_effects.conf:system/etc/audio_effects.conf \
-	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
-
-USE_CUSTOM_AUDIO_POLICY := 1
-
 # Blobs
 $(call inherit-product-if-exists, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
 
@@ -34,6 +27,7 @@ PRODUCT_COPY_FILES += \
 
 # Chromium 
 PRODUCT_COPY_FILES := \
+	$(LOCAL_PATH)/chromium/libwebviewchromium64.so:system/lib64/libwebviewchromium.so \
 	$(LOCAL_PATH)/chromium/libwebviewchromium.so:system/lib/libwebviewchromium.so
 
 # Device Path
@@ -236,6 +230,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/thermald.xml:system/etc/thermald.xml \
 	$(LOCAL_PATH)/configs/thermald_performance.xml:system/etc/thermald_performance.xml
+
+# Wifi
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/wpa/hostapd_hisi.conf:system/etc/wifi/hostapd_hisi.conf \
+	$(LOCAL_PATH)/wpa/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+	$(LOCAL_PATH)/wpa/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+	$(LOCAL_PATH)/wpa/wpa_supplicant_hisi.conf:system/etc/wifi/wpa_supplicant_hisi.conf \
+	$(LOCAL_PATH)/wpa/fw_bcm4343s_apsta_hw.bin:system/vendor/firmware/fw_bcm4343s_apsta_hw.bin \
+	$(LOCAL_PATH)/wpa/fw_bcm4343s_p2p_hw.bin:system/vendor/firmware/fw_bcm4343s_p2p_hw.bin \
+	$(LOCAL_PATH)/wpa/fw_bcm4343s_test_hw_apsta.bin:system/vendor/firmware/fw_bcm4343s_test_hw_apsta.bin \
+	$(LOCAL_PATH)/wpa/nvram4343s_hw.txt:system/vendor/firmware/nvram4343s_hw.txt \
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := cm_hi6210sft
