@@ -221,6 +221,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/sepolicy/seapp_contexts:root/seapp_contexts \
 	$(LOCAL_PATH)/sepolicy/service_contexts:root/service_contexts 
 
+# Thermal
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/thermald.xml:system/etc/thermald.xml \
+	$(LOCAL_PATH)/configs/thermald_performance.xml:system/etc/thermald_performance.xml
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := cm_hi6210sft
 PRODUCT_DEVICE := hi6210sft
