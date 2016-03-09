@@ -51,6 +51,42 @@ PRODUCT_PACKAGES += \
 	power.hi6210sft \
 	sensors.hi6210sft
 
+# Add openssh support for remote debugging and job submission
+PRODUCT_PACKAGES += ssh sftp scp sshd ssh-keygen sshd_config start-ssh uim wpa_supplicant
+
+# Build and run only ART
+PRODUCT_RUNTIMES := runtime_libart_default
+
+# Build BT a2dp audio HAL
+PRODUCT_PACKAGES += audio.a2dp.default
+
+# Needed to sync the system clock with the RTC clock
+PRODUCT_PACKAGES += hwclock
+
+# Include USB speed switch App
+PRODUCT_PACKAGES += UsbSpeedSwitch
+
+# Build libion for new double-buffering HDLCD driver
+PRODUCT_PACKAGES += libion
+
+# Build gatord daemon for DS-5/Streamline
+PRODUCT_PACKAGES += gatord
+
+# Build gralloc for Juno
+PRODUCT_PACKAGES += gralloc.hi6210sft
+
+# Include ION tests
+PRODUCT_PACKAGES += iontest \
+                    ion-unit-tests
+
+# Set zygote config
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
+PRODUCT_PROPERTY_OVERRIDES += \
+         debug.sf.no_hw_vsync=1 \
+         ro.secure=0 \
+         ro.adb.secure=0
+
+PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
 
 # Kernel, My Own Cannabis :D 
 # ifeq ($(TARGET_PREBUILT_KERNEL),)
