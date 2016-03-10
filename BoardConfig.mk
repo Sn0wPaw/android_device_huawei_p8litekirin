@@ -43,12 +43,12 @@ BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 no_irq_affinity androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
-TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_defconfig
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_USES_UNCOMPRESSED_KERNEL := true
-TARGET_KERNEL_SOURCE := kernel/huawei/hi6210sft
+# TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_defconfig
+# TARGET_KERNEL_ARCH := arm64
+# TARGET_KERNEL_HEADER_ARCH := arm64
+# TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+# TARGET_USES_UNCOMPRESSED_KERNEL := true
+TARGET_PREBUILT_KERNEL := device/huawei/p8litekirin/kernel
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
@@ -74,8 +74,6 @@ BOARD_WPA_SUPPLICANT_DRIVER         := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB    := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER                := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB           := lib_driver_cmd_bcmdhd
-WIFI_DRIVER_MODULE_NAME             := "dhd"
-WIFI_DRIVER_MODULE_PATH             := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_FW_PATH_AP              := "/vendor/firmware/fw_bcm4343s_apsta_hw.bin"
 WIFI_DRIVER_FW_PATH_P2P             := "/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
 WIFI_DRIVER_FW_PATH_STA             := "/vendor/firmware/fw_bcm4343s_test_hw_apsta.bin"
