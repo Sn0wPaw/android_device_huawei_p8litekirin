@@ -1,0 +1,5 @@
+[
+{
+    "target_path": "kernel/huawei/hi6210sft",
+    "branch": "cm-12.1"
+}
