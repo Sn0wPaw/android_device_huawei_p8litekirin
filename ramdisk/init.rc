@@ -6,6 +6,8 @@ import /init.${ro.zygote}.rc
 
 import /init.hisi.rc
 
+import /init.cm.rc
+
 import /init.audio.rc
 import /init.connectivity.rc
 import /init.device.rc
