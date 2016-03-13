@@ -1,53 +1,38 @@
+USE_CAMERA_STUB := true
+
+# inherit from the proprietary version
+-include vendor/huawei/p8litekirin/BoardConfigVendor.mk
+
 # Architecture
-ifneq ($(FORCE_32_BIT),true)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
-TARGET_BOARD_SUFFIX := _64
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
+TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
-
-TARGET_USES_64_BIT_BINDER := true
-else
-TARGET_BOARD_SUFFIX := _32
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := cortex-a53
-endif
+TARGET_2ND_CPU_VARIANT := generic
 
 # Board
+TARGET_NO_BOOTLOADER := true
+BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_BOARD_PLATFORM := kirin930
 TARGET_BOOTLOADER_BOARD_NAME := p8litekirin
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 no_irq_affinity androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
-ifneq ($(FORCE_32_BIT),true)
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_USES_UNCOMPRESSED_KERNEL := true
-else
-TARGET_KERNEL_ARCH := arm
-endif
-TARGET_KERNEL_SOURCE := kernel/huawei/hi6210sft
-ifneq ($(FORCE_32_BIT),true)
-TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_64_defconfig
-else
-TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_defconfig
-endif
+
+TARGET_PREBUILT_KERNEL := device/huawei/p8litekirin/kernel
+# Use this for build from source (need declares)
+# TARGET_KERNEL_SOURCE := kernel/huawei
+# TARGET_KERNEL_CONFIG := aosp_p8litekirin_defconfig
 
 # Partitionsizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
@@ -57,7 +42,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 11605639168
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Recovery
-BOARD_HAS_LARGE_FILESYSTEM := true
+DEVICE_RESOLUTION := 720x1280
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_HAS_LARGE_FILESYSTEM := true

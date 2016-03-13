@@ -1,22 +1,25 @@
-# Copyright (C) 2016 The CyanogenMod Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+TARGET_BOOTANIMATION_HALF_RES := true
 
-$(call inherit-product, device/huawei/hi6210sft/full_hi6210sft.mk)
+# Release name
+PRODUCT_RELEASE_NAME := p8litekirin
+
+# Inherit device configuration
+$(call inherit-product, device/huawei/p8litekirin/device.mk)
+$(call inherit-product, device/huawei/p8litekirin/full_p8litekirin.mk)
+
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_hi6210sft
-BOARD_VENDOR := Huawei
-PRODUCT_DEVICE := hi6210sft
+# Enhanced NFC
+$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := p8litekirin
+PRODUCT_NAME := cm_p8litekirin
+PRODUCT_BRAND := Huawei
+PRODUCT_MODEL := ALE-L21
+PRODUCT_MANUFACTURER := Huawei
