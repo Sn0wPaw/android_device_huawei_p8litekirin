@@ -2,15 +2,17 @@ $(call inherit-product-if-exists, vendor/huawei/p8litekirin/p8litekirin-vendor.m
 
 DEVICE_PACKAGE_OVERLAYS += device/huawei/p8litekirin/overlay
 
+# Keys
+$(call inherit-product-if-exists, device/huawei/p8litekirin/keylayout.mk)
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/huawei/p8litekirin/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
+# NFC
+$(call inherit-product-if-exists, device/huawei/p8litekirin/nfc.mk)
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-# Inherit Ramdisk
+# Ramdisk
 $(call inherit-product-if-exists, device/huawei/p8litekirin/ramdisk.mk)
+
+# Selinux
+$(call inherit-product-if-exists, device/huawei/p8litekirin/selinux.mk)
+
+# Wifi
+$(call inherit-product-if-exists, device/huawei/p8litekirin/wifi.mk)
