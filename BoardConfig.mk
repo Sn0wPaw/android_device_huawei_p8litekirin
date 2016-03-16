@@ -1,0 +1,82 @@
+# 64 Bit
+ANDROID_64=true
+TARGET_SUPPORTS_32_BIT_APPS := true
+TARGET_SUPPORTS_64_BIT_APPS := true
+TARGET_USES_64_BIT_BINDER := true
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_CPU_ABI := arm64-v8a
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_VARIANT := generic
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a15
+
+# Audio
+BOARD_USES_GENERIC_AUDIO := true
+
+# Board
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_BOARD_PLATFORM := hikey
+TARGET_HARDWARE_3D := true
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_KERNEL := false
+TARGET_NO_RECOVERY := true
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := "device/huawei/hi6210sft/bluetooth"
+BOARD_HAVE_BLUETOOTH := true
+
+# Camera
+USE_CAMERA_STUB := true
+
+# Hardware
+ANDROID_ENABLE_RENDERSCRIPT := true
+USE_OPENGL_RENDERER := true
+WITH_DEXPREOPT ?= true
+
+# Kernel
+BOARD_KERNEL_BASE := 0x07478000
+BOARD_KERNEL_CMDLINE := k3v2mem hisi_dma_print=0 vmalloc=384M no_irq_affinity loglevel=7 androidboot.hardware=hikey selinux=0
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
+TARGET_PREBUILT_KERNEL := device/huawei/huawei/kernel
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 11605639168
+BOARD_FLASH_BLOCK_SIZE := 131072
+TARGET_USES_HISI_DTIMAGE := true
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# Recovery
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_USE_PAN_DISPLAY := true
+
+BOARD_SEPOLICY_DIRS += device/huawei/hi6210sft/sepolicy
+BOARD_SEPOLICY_UNION += \
+        file.te \
+        genfs_contexts \
+        init.te \
+        kernel.te
+		
+# TWRP
+DEVICE_RESOLUTION := 720x1280
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/hi6210sft/graphics.c
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd_backlight0/brightness"
+TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/bq_bci_battery.1/power_supply/Battery"
+TW_MAX_BRIGHTNESS := 255
+DEVICE_RESOLUTION := 720x1280		
+
+# Wifi
+CONFIG_DRIVER_NL80211 := y
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION := VER_0_8_X
