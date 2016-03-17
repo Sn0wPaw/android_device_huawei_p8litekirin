@@ -15,8 +15,6 @@ bin/netcfg
 bin/rild
 
 # Libs
-lib/drm/libdrmhwomavoneplugin.so
-lib/drm/libdrmwvmplugin.so.so
 lib/libaudiopolicyservice.so
 lib/libcameraservice.so
 lib/libstagefright.so
@@ -77,7 +75,7 @@ lib/lib_hwnsd_sf.so
 lib64/libgui.so
 lib/libgui.so
 lib64/libhwaps.so
-libhwaps.so
+lib/libhwaps.so
 lib64/libion.so
 lib/libion.so
 lib64/libsurfaceflinger.so
@@ -151,8 +149,8 @@ lib/libjpu.so
 lib64/libjpu.so
 
 # Mali
-lib64/egl/libGLES_mali.so\
-lib/egl/libGLES_mali.so\
+lib64/egl/libGLES_mali.so
+lib/egl/libGLES_mali.so
 			
 # Vendors			
 vendor/firmware/4343A0_001.001.034.0056.0193_ORC.hcd
