@@ -33,30 +33,26 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Fstab.hi6210sft
 PRODUCT_PACKAGES += \
-		fstab.hi6210sft
+	fstab.hi6210sft
 		
 PRODUCT_PACKAGES += \
-	  com.android.future.usb.accessory \
-      setup_fs \
-      librs_jni \
-      libsrec_jni \
       make_ext4fs
 	  
 # General
 PRODUCT_PROPERTY_OVERRIDES += \
-		ro.build.selinux=0
+	ro.build.selinux=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
-		media.stagefright.enable-player=true \
-		media.stagefright.enable-meta=true \
-		media.stagefright.enable-scan=true \
-		media.stagefright.enable-http=true \
-		media.stagefright.enable-rtsp=true \
-		media.stagefright.enable-record=true \
-		net.rmnet0.dns1=8.8.8.8 \
-		net.rmnet0.dns2=8.8.4.4 \
-		net.dns1=8.8.8.8 \
-		net.dns2=8.8.4.4
+	media.stagefright.enable-player=true \
+	media.stagefright.enable-meta=true \
+	media.stagefright.enable-scan=true \
+	media.stagefright.enable-http=true \
+	media.stagefright.enable-rtsp=true \
+	media.stagefright.enable-record=true \
+	net.rmnet0.dns1=8.8.8.8 \
+	net.rmnet0.dns2=8.8.4.4 \
+	net.dns1=8.8.8.8 \
+	net.dns2=8.8.4.4
 
 # Kernel, My Own Cannabis :D
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -70,103 +66,99 @@ PRODUCT_COPY_FILES += \
 	  
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-		LiveWallpapers \
-		LiveWallpapersPicker \
-		VisualizationWallpapers
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	VisualizationWallpapers
 
 PRODUCT_PACKAGES += \
-		libc2dcolorconvert \
-		libdashplayer
+	libc2dcolorconvert \
+	libdashplayer
 		
 # OpenGL ES
 PRODUCT_PROPERTY_OVERRIDES += \
-		wifi.interface=wlan0 \
-		ap.interface=wlan1 \
-		persist.sys.usb.config=mtp,adb
+	wifi.interface=wlan0 \
+	ap.interface=wlan1 \
+	persist.sys.usb.config=mtp,adb
 		
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Power HAL
 PRODUCT_PACKAGES += \
-		power.hi6210sft
+	power.hi6210sft
 
 # Ramdisk		
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-			$(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
-			$(LOCAL_PATH)/ramdisk/init.hi6210sft.rc:root/init.hi6210sft.rc \
-			$(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc \
-			$(LOCAL_PATH)/ramdisk/init:root/init\
-			$(LOCAL_PATH)/ramdisk/init.5801.rc:root/init.5801.rc\
-			$(LOCAL_PATH)/ramdisk/init.6165.rc:root/init.6165.rc\
-			$(LOCAL_PATH)/ramdisk/init.10106.rc:root/init.10106.rc\
-			$(LOCAL_PATH)/ramdisk/init.51054.rc:root/init.51054.rc\
-			$(LOCAL_PATH)/ramdisk/init.102173.rc:root/init.102173.rc\
-			$(LOCAL_PATH)/ramdisk/init.142782.rc:root/init.142782.rc\
-			$(LOCAL_PATH)/ramdisk/init.audio.rc:root/init.audio.rc\
-			$(LOCAL_PATH)/ramdisk/init.chip.usb.rc:root/init.chip.usb.rc\
-			$(LOCAL_PATH)/ramdisk/init.connectivity.bcm43xx.rc:root/init.connectivity.bcm43xx.rc\
-			$(LOCAL_PATH)/ramdisk/init.connectivity.hi110x.rc:root/init.connectivity.hi110x.rc\
-			$(LOCAL_PATH)/ramdisk/init.connectivity.rc:root/init.connectivity.rc\
-			$(LOCAL_PATH)/ramdisk/init.device.rc:root/init.device.rc\
-			$(LOCAL_PATH)/ramdisk/init.extmodem.rc:root/init.extmodem.rc\
-			$(LOCAL_PATH)/ramdisk/init.hisi.rc:root/init.hisi.rc\
-			$(LOCAL_PATH)/ramdisk/init.manufacture.rc:root/init.manufacture.rc\
-			$(LOCAL_PATH)/ramdisk/init.performance.rc:root/init.performance.rc\
-			$(LOCAL_PATH)/ramdisk/init.platform.rc:root/init.platform.rc\
-			$(LOCAL_PATH)/ramdisk/init.protocol.rc:root/init.protocol.rc\
-			$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc\
-			$(LOCAL_PATH)/ramdisk/init.recovery.hi110x.rc:root/init.recovery.hi110x.rc\
-			$(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc\
-			$(LOCAL_PATH)/ramdisk/init.tee.rc:root/init.tee.rc\
-			$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc\
-			$(LOCAL_PATH)/ramdisk/init.zygote64_32.rc:root/init.zygote64_32.rc\
-			$(LOCAL_PATH)/ramdisk/property_contexts:root/property_contexts\
-			$(LOCAL_PATH)/ramdisk/seapp_contexts:root/seapp_contexts\
-			$(LOCAL_PATH)/ramdisk/service_contexts:root/service_contexts\
-			$(LOCAL_PATH)/ramdisk/ueventd.5801.rc:root/ueventd.5801.rc\
-			$(LOCAL_PATH)/ramdisk/ueventd.6165.rc:root/ueventd.6165.rc\
-			$(LOCAL_PATH)/ramdisk/ueventd.10106.rc:root/ueventd.10106.rc\
-			$(LOCAL_PATH)/ramdisk/ueventd.51054.rc:root/ueventd.51054.rc\
-			$(LOCAL_PATH)/ramdisk/ueventd.102173.rc:root/ueventd.102173.rc\
-			$(LOCAL_PATH)/ramdisk/ueventd.142782.rc:root/ueventd.142782.rc\
-			$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc\
-			$(LOCAL_PATH)/ramdisk/sbin/adbd:root/sbin/adbd\
-			$(LOCAL_PATH)/ramdisk/sbin/check_root:root/sbin/check_root\
-			$(LOCAL_PATH)/ramdisk/sbin/e2fsck_s:root/sbin/e2fsck_s\
-			$(LOCAL_PATH)/ramdisk/sbin/emmc_partation:root/sbin/emmc_partation\
-			$(LOCAL_PATH)/ramdisk/sbin/hdbd:root/sbin/hdbd\
-			$(LOCAL_PATH)/ramdisk/sbin/adbd:healthd/sbin/healthd\
-			$(LOCAL_PATH)/ramdisk/sbin/adbd:teecd/sbin/teecd)		
-		
-# Recovery
-PRODUCT_COPY_FILES += \
-		$(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
-    
+	$(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
+	$(LOCAL_PATH)/ramdisk/init:root/init \
+	$(LOCAL_PATH)/ramdisk/init.5801.rc:root/init.5801.rc \
+	$(LOCAL_PATH)/ramdisk/init.6165.rc:root/init.6165.rc \
+	$(LOCAL_PATH)/ramdisk/init.10106.rc:root/init.10106.rc \
+	$(LOCAL_PATH)/ramdisk/init.51054.rc:root/ \
+	$(LOCAL_PATH)/ramdisk/init.102173.rc:root/init.102173.rc \
+	$(LOCAL_PATH)/ramdisk/init.142782.rc:root/init.142782.rc \
+	$(LOCAL_PATH)/ramdisk/init.audio.rc:root/init.audio.rc \
+	$(LOCAL_PATH)/ramdisk/init.chip.usb.rc:root/init.chip.usb.rc \
+	$(LOCAL_PATH)/ramdisk/init.connectivity.bcm43xx.rc:root/ \
+	$(LOCAL_PATH)/ramdisk/init.connectivity.hi110x.rc:root/init.connectivity.hi110x.rc \
+	$(LOCAL_PATH)/ramdisk/init.connectivity.rc:root/init.connectivity.rc \
+	$(LOCAL_PATH)/ramdisk/init.device.rc:root/init.device.rc \
+	$(LOCAL_PATH)/ramdisk/init.environ.rc:root/init.environ.rc \
+	$(LOCAL_PATH)/ramdisk/init.extmodem.rc:root/init.extmodem.rc \
+	$(LOCAL_PATH)/ramdisk/init.hi6210sft.rc:root/init.hi6210sft.rc \
+	$(LOCAL_PATH)/ramdisk/init.hisi.rc:root/init.hisi.rc \
+	$(LOCAL_PATH)/ramdisk/init.manufacture.rc:root/init.manufacture.rc \
+	$(LOCAL_PATH)/ramdisk/init.performance.rc:root/init.performance.rc \
+	$(LOCAL_PATH)/ramdisk/init.platform.rc:root/init.platform.rc \
+	$(LOCAL_PATH)/ramdisk/init.protocol.rc:root/init.protocol.rc \
+	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
+	$(LOCAL_PATH)/ramdisk/init.recovery.hi110x.rc:root/init.recovery.hi110x.rc \
+	$(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc \
+	$(LOCAL_PATH)/ramdisk/init.tee.rc:root/init.tee.rc \
+	$(LOCAL_PATH)/ramdisk/init.trace.rc:root/init.trace.rc \
+	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
+	$(LOCAL_PATH)/ramdisk/init.zygote32.rc:root/init.zygote32.rc \
+	$(LOCAL_PATH)/ramdisk/init.zygote64_32.rc:root/init.zygote64_32.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.5801.rc:root/ueventd.5801.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.6165.rc:root/ueventd.6165.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.10106.rc:root/ueventd.10106.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.51054.rc:root/ueventd.51054.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.102173.rc:root/ueventd.102173.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.142782.rc:root/ueventd.142782.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc \
+	$(LOCAL_PATH)/ramdisk/sbin/adbd:root/sbin/adbd \
+	$(LOCAL_PATH)/ramdisk/sbin/check_root:root/sbin/check_root \
+	$(LOCAL_PATH)/ramdisk/sbin/e2fsck_s:root/sbin/e2fsck_s \
+	$(LOCAL_PATH)/ramdisk/sbin/emmc_partation:root/sbin/emmc_partation \
+	$(LOCAL_PATH)/ramdisk/sbin/hdbd:root/sbin/hdbd \
+	$(LOCAL_PATH)/ramdisk/sbin/healthd:root/sbin/healthd \
+	$(LOCAL_PATH)/ramdisk/sbin/kmsgcat:root/sbin/kmsgcat \
+	$(LOCAL_PATH)/ramdisk/sbin/logctl_service:root/sbin/logctl_service \
+	$(LOCAL_PATH)/ramdisk/sbin/ntfs-3gd:root/sbin/ntfs-3gd \
+	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
+	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/teecd \
+	$(LOCAL_PATH)/ramdisk/sbin/ueventd:root/sbin/ueventd \
+	$(LOCAL_PATH)/ramdisk/sbin/watchdogd:root/sbin/watchdogd)
+
 # Recovery
 PRODUCT_PACKAGES += \
-		minivold
-	
-# Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := ALE-L21	
+	minivold	
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-		audioril.lib=libhuawei-audio-ril.so \
-		ro.telephony.ril_class=HuaweiRIL \
-		telephony.lteOnCdmaDevice=0 \
-		telephony.lteOnGsmDevice=1 \
-		ro.telephony.default_network=9
+	audioril.lib=libhuawei-audio-ril.so \
+	ro.telephony.ril_class=HuaweiRIL \
+	telephony.lteOnCdmaDevice=0 \
+	telephony.lteOnGsmDevice=1 \
+	ro.telephony.default_network=9
 
 # Vold
 PRODUCT_PACKAGES += \
-		libbt-vendor \
-		uim-sysfs 
+	libbt-vendor \
+	uim-sysfs 
 		
 # Hi6210sft Packages
-# Set custom settings
-#DEVICE_PACKAGE_OVERLAYS := device/huawei/hi6210sft/overlay
-
 # Add openssh support for remote debugging and job submission
 PRODUCT_PACKAGES += ssh sftp scp sshd ssh-keygen sshd_config start-ssh uim wpa_supplicant
 
@@ -197,6 +189,7 @@ PRODUCT_PACKAGES += iontest \
 
 # Set zygote config
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
+
 PRODUCT_PROPERTY_OVERRIDES += \
          debug.sf.no_hw_vsync=1 \
          ro.secure=0 \
