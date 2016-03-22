@@ -80,7 +80,11 @@ PRODUCT_COPY_FILES += \
         device/huawei/hi6210sft/bt-wifi-firmware-util/wl18xx-fw-4.bin:system/etc/firmware/ti-connectivity/wl18xx-fw-4.bin \
         device/huawei/hi6210sft/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
         device/huawei/hi6210sft/audio/audio_policy.conf:system/etc/audio_policy.conf
-
-
-# Copy media codecs config file
-PRODUCT_COPY_FILES += device/huawei/hi6210sft/media_codecs.xml:system/etc/media_codecs.xml
+        
+#RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+audioril.lib=libhuawei-audio-ril.so \
+ro.telephony.ril_class=HuaweiRIL \
+telephony.lteOnCdmaDevice=0 \
+telephony.lteOnGsmDevice=1 \
+ro.telephony.default_network=9        
