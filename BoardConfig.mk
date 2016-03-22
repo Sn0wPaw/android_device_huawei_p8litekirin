@@ -54,6 +54,15 @@ BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
 TARGET_KERNEL_PREBUILT := device/huawei/hi6210sft/kernel
+ifeq ($(strip $(USE_LINARO_TOOLCHAIN)),true)
+# 64bit toolchain
+KERNEL_TOOLS_PREFIX ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro/bin/aarch64-linux-android-
+TARGET_TOOLS_PREFIX ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro/bin/aarch64-linux-android-
+# 32bit toolchain
+# Linaro 32bit toolchain is disabled because of this bug https://bugs.linaro.org/show_bug.cgi?id=383
+2ND_TARGET_TOOLCHAIN_ROOT ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9-linaro
+2ND_TARGET_TOOLS_PREFIX ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9-linaro/bin/arm-linux-androideabi-
+endif
 
 # Media symbols > thank you codeworkx
 BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_huawei_symbols
