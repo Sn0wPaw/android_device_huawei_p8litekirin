@@ -48,6 +48,9 @@ TARGET_NO_BOOTLOADER := true
 
 TARGET_CPU_SMP := true
 
+# Chromium
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+
 # Kernel
 KERNEL_CONFIG = arch/arm64/configs/hisi_hi6210sft_defconfig android/configs/android-base.cfg android/configs/android-recommended.cfg
 BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 no_irq_affinity androidboot.selinux=permissive
