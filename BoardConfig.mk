@@ -49,11 +49,11 @@ TARGET_NO_BOOTLOADER := true
 TARGET_CPU_SMP := true
 
 # Kernel
+KERNEL_CONFIG = arch/arm64/configs/cyanogenmod_hi6210sft_64_defconfig android/configs/android-base.cfg android/configs/android-recommended.cfg
 BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 no_irq_affinity androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
-TARGET_KERNEL_PREBUILT := device/huawei/hi6210sft/kernel
 ifeq ($(strip $(USE_LINARO_TOOLCHAIN)),true)
 # 64bit toolchain
 KERNEL_TOOLS_PREFIX ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-linaro/bin/aarch64-linux-android-
@@ -62,6 +62,12 @@ TARGET_TOOLS_PREFIX ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/aarch64/aarch6
 # Linaro 32bit toolchain is disabled because of this bug https://bugs.linaro.org/show_bug.cgi?id=383
 2ND_TARGET_TOOLCHAIN_ROOT ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9-linaro
 2ND_TARGET_TOOLS_PREFIX ?= $(realpath $(TOP))/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9-linaro/bin/arm-linux-androideabi-
+endif
+
+ifneq ($(FORCE_32_BIT),true)
+TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_64_defconfig
+else
+TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_defconfig
 endif
 
 # Media symbols > thank you codeworkx
