@@ -26,7 +26,7 @@ PRODUCT_MODEL := AOSP on P8 Lite K
 PRODUCT_MANUFACTURER := Huawei
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-#$(call inherit-product-if-exists, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
 
 PRODUCT_NAME := aosp_hi6210sft
 
