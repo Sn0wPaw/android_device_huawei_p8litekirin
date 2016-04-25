@@ -1,9 +1,0 @@
-add_lunch_combo aosp_alice-user
-add_lunch_combo aosp_alice-userdebug
-add_lunch_combo aosp_alice-eng
-add_lunch_combo omni_alice-user
-add_lunch_combo omni_alice-userdebug
-add_lunch_combo omni_alice-eng
-add_lunch_combo cm_alice-user
-add_lunch_combo cm_alice-userdebug
-add_lunch_combo cm_alice-eng
