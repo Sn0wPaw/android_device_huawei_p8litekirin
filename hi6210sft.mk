@@ -2,7 +2,13 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
+# Blobs, Get non-open-source parts
+$(call inherit-product, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
+
 # Chromium, call your own blobs.
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/chromium/32/libwebviewchromium.so:system/lib/libwebviewchromium.so \
+	$(LOCAL_PATH)/chromium/64/libwebviewchromium.so:system/lib64/libwebviewchromium.so
 
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
