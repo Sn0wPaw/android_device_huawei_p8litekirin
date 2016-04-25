@@ -20,7 +20,7 @@ TARGET_2ND_CPU_VARIANT := cortex-a15
 BOARD_USES_GENERIC_AUDIO := true
 
 # Bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/huawei/h60-common/bluetooth/vnd_h60.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/huawei/hi6210sft/bluetooth/vnd_h60.txt
 #BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hi6210sft/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
