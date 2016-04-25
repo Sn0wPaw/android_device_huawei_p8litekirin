@@ -9,7 +9,7 @@ LOCAL_PATH := device/huawei/hi6210sft
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/s2vep/kernel
+LOCAL_KERNEL := device/huawei/hi6210sft/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
