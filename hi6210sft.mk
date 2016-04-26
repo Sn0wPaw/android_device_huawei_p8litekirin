@@ -2,6 +2,12 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
+# Binaries for Boot
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/isp.bin:system/sp.bin \
+	$(LOCAL_PATH)/rootdir/ons.bin:system/ons.bin \
+	$(LOCAL_PATH)/rootdir/phone.prop:system/phone.prop
+
 # Binaries that we cannot extract with extract-files.sh
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/bin/agnsscontrol:system/bin/agnsscontrol \
@@ -41,6 +47,11 @@ PRODUCT_COPY_FILES += \
 
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
+
+# Graphics
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
+	$(LOCAL_PATH)/rootdir/lib64/egl/libGLES_android.so:system/lib64/egl/libGLES_android.so
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -99,3 +110,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/sbin/e2fsck_s:root/sbin/e2fsck_s \
 	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
 	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/teecd
+
+# Zygote
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
+PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
+PRODUCT_PACKAGES += libGLES_android

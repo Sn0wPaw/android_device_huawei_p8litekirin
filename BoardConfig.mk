@@ -84,20 +84,18 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SEPOLICY_DIRS := device/huawei/hi6210sft/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-	file.te \
 	file_contexts \
-	genfs_contexts \
-	init.te
+	installd.te
 
 # TWRP
-DEVICE_RESOLUTION := 720x1280
+#DEVICE_RESOLUTION := 720x1280
 #TW_BOARD_CUSTOM_GRAPHICS := ../../../device/huawei/hi6210sft/graphics.c
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd_backlight0/brightness"
-TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/bq_bci_battery.1/power_supply/Battery"
-TW_MAX_BRIGHTNESS := 255
-TW_NO_USB_STORAGE := true
-TW_THEME := hdpi_portrait
-TW_THEME := portrait_hdpi
+#TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd_backlight0/brightness"
+#TW_CUSTOM_BATTERY_PATH := "/sys/devices/platform/bq_bci_battery.1/power_supply/Battery"
+#TW_MAX_BRIGHTNESS := 255
+#TW_NO_USB_STORAGE := true
+#TW_THEME := hdpi_portrait
+#TW_THEME := portrait_hdpi
 
 # WebBGL
 ENABLE_WEBGL := true
