@@ -9,6 +9,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
          ro.secure=0 \
          ro.adb.secure=0
 
+# AAPT high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
 # Binaries for Boot
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/isp.bin:system/sp.bin \
@@ -157,7 +161,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
 	$(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc \
-
+	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
+	$(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc
 
 # Zygote
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
