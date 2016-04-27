@@ -491,8 +491,6 @@ on boot
     chown system system /sys/class/leds/blue/delay_off
     chown system system /sys/class/leds/blue/delay_on
 
-
-
 service fuse_sdcard1rw /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
    class late_start
    disabled
@@ -1000,8 +998,6 @@ service logserver /system/bin/logserver
     oneshot
     seclabel u:r:logserver:s0
 
-
-
 service macaddr /system/bin/mac_addr_normalization
     class core
     user root
@@ -1022,7 +1018,6 @@ service modematserver /system/bin/modemlogcat_lte -f hidp
     group system
     disabled
     oneshot
-
 
 service modemlogcat_VIA /system/bin/modemlogcat_via -t /dev/ttySPI1 -c /system/etc/modemConfig/viacbp82d_log.bcfg -p /data/hwzd_logs/cp_log/ -r 30 -n 9
     class late_start
