@@ -58,6 +58,9 @@ TARGET_HARDWARE_3D := true
 USE_OPENGL_RENDERER := true
 WITH_DEXPREOPT ?= true
 
+# Healthd
+BOARD_HAL_STATIC_LIBRARIES += libhealthd.hi6210sft
+
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyAMA3,115200 androidboot.console=ttyAMA3 firmware_class.path=/system/vendor/firmware hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity androidboot.selinux=enforcing ate_enable=true
 BOARD_KERNEL_BASE := 0x07478000
