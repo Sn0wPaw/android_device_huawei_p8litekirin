@@ -183,6 +183,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
 	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/teecd
 
+# Thermald
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/etc/thermald.xml:system/etc/thermald.xml \
+	$(LOCAL_PATH)/rootdir/etc/thermald_performance.xml:system/etc/thermald_performance.xml
+
 # TP Parameters
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/etc/tp_test_parameters/alice_junda_input_format.csv:system/etc/tp_test_parameters/alice_junda_input_format.csv \
