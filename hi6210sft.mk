@@ -222,8 +222,8 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/rootdir/rootdir/lib/oamdrv.ko:system/lib/oamdrv.ko \
-	$(LOCAL_PATH)/rootdir/rootdir/lib/wifi.ko:system/lib/wifi.ko \
+	$(LOCAL_PATH)/rootdir/lib/oamdrv.ko:system/lib/oamdrv.ko \
+	$(LOCAL_PATH)/rootdir/lib/wifi.ko:system/lib/wifi.ko \
 	$(LOCAL_PATH)/rootdir/etc/wifi/hostapd_hisi.conf:system/etc/wifi/hostapd_hisi.conf \
 	$(LOCAL_PATH)/rootdir/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
 	$(LOCAL_PATH)/rootdir/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
