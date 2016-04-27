@@ -28,6 +28,14 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, device/huawei/hi6210sft/system_bin.mk)
 $(call inherit-product, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
 
+# Bluetooth
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/etc/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
+	$(LOCAL_PATH)/rootdir/etc/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
+	$(LOCAL_PATH)/rootdir/etc/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
+	$(LOCAL_PATH)/rootdir/etc/bluetooth/bt_stack_log.conf:system/etc/bluetooth/bt_stack_log.conf \
+	$(LOCAL_PATH)/rootdir/etc/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+
 # Camera
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/etc/camera_orientation.cfg:system/etc/camera_orientation.cfg \
