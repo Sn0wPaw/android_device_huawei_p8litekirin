@@ -40,7 +40,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/etc/camera_orientation.cfg:system/etc/camera_orientation.cfg \
 	$(LOCAL_PATH)/rootdir/etc/camera_resolutions.cfg:system/etc/camera_resolutions.cfg \
-	$(LOCAL_PATH)/hi6210sft/rootdir/etc/camera_videosnapshot.cfg:system/etc/camera_videosnapshot.cfg \
+	$(LOCAL_PATH)/rootdir/etc/camera_videosnapshot.cfg:system/etc/camera_videosnapshot.cfg \
 	$(LOCAL_PATH)/rootdir/etc/mobilevideocfg.xml:system/etc/mobilevideocfg.xml
 
 # Chromium, call your own blobs.
