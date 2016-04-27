@@ -100,7 +100,18 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
 	libGLES_android \
-	gralloc.hi6210sft 
+	gralloc.hi6210sft
+
+# HiSilicon 
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/etc/clatd.conf:system/etc/clatd.conf \
+	$(LOCAL_PATH)/rootdir/etc/device_state_monitor.conf:system/etc/device_state_monitor.cfg \
+	$(LOCAL_PATH)/rootdir/etc/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/rootdir/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
+	$(LOCAL_PATH)/rootdir/etc/hisi_cfg.ini:system/etc/hisi_cfg.ini \
+	$(LOCAL_PATH)/rootdir/etc/hisi_cfg_alice.ini:system/etc/hisi_cfg_alice.ini \
+	$(LOCAL_PATH)/rootdir/etc/hisi_cfg_cherry.ini:system/etc/hisi_cfg_cherry.ini \
+	$(LOCAL_PATH)/rootdir/etc/hisi_omx.cfg:system/etc/hisi_omxcfg
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -182,6 +193,12 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/sbin/logctl_service:root/sbin/logctl_service \
 	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
 	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/teecd
+
+# SRS Processing
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/etc/srs/models.txt:system/etc/srs/models.txt \
+	$(LOCAL_PATH)/rootdir/etc/srs/srsmodels.lic:system/etc/srs/srsmodels.lic \
+	$(LOCAL_PATH)/rootdir/etc/srs/srs_processing.cfg:system/etc/srs/srs_processing.cfg
 
 # Thermald
 PRODUCT_COPY_FILES += \
