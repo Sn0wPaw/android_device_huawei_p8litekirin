@@ -97,19 +97,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SEPOLICY_DIRS := device/huawei/hi6210sft/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-        bluetooth.te \
-        debuggered.te \
-        device.te \
-        dhcp.te \
-        file.te \
-        file_contexts \
-        healthd.te \
-        init_shell.te \
-        mediaserver.te \
-        netd.te \
-        rild.te \
-        system.te \
-        vold.te
+    file_contexts \
+    installd.te
 
 # TWRP
 #DEVICE_RESOLUTION := 720x1280
