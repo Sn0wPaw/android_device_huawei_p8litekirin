@@ -75,8 +75,6 @@ lib/libteec.so
 lib/libwifi_factory_test.so
 lib/libwifi_factory_test_hi110x.so
 lib/libwpa_client_hisi.so
-lib/oamdrv.ko
-lib/wifi.ko
 
 # Libs 64 Bit
 lib64/egl/libGLES_mali.so
