@@ -161,8 +161,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
 	$(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc \
-	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
+	$(LOCAL_PATH)/ramdisk/init.hi6210sft.rc:root/init.hi6210sft.rc \
 	$(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/ramdisk/sbin/emmc_partation:root/sbin/emmc_partation \
+	$(LOCAL_PATH)/ramdisk/sbin/hdbd:root/sbin/hdbd \
+	$(LOCAL_PATH)/ramdisk/sbin/logctl_service:root/sbin/logctl_service \
+	$(LOCAL_PATH)/ramdisk/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server \
+	$(LOCAL_PATH)/ramdisk/sbin/teecd:root/sbin/teecd
 
 # Zygote
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
