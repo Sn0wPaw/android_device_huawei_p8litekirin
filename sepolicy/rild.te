@@ -9,6 +9,6 @@ allow rild radio_data_file:file { read open write setattr };
 allow rild device:chr_file { read write open };
 
 allow rild device:chr_file ioctl;
-allow rild proc:file write;
+#allow rild proc:file write;
 allow rild system_data_file:sock_file { create unlink setattr };
 allow rild app_data_file:file { write getattr setattr read lock open };
