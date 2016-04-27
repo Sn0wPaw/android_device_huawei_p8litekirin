@@ -101,7 +101,6 @@ BOARD_SEPOLICY_UNION += \
         debuggered.te \
         device.te \
         dhcp.te \
-        domain.te \
         file.te \
         file_contexts \
         healthd.te \
