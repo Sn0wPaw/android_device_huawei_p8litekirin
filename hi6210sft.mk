@@ -17,6 +17,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/chromium/32/libwebviewchromium.so:system/lib/libwebviewchromium.so \
 	$(LOCAL_PATH)/chromium/64/libwebviewchromium.so:system/lib64/libwebviewchromium.so
 
+# Codecs
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/etc/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/rootdir/etc/media_profiles.xmletc/media_profiles.xml
+
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
 
