@@ -70,6 +70,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
 	$(LOCAL_PATH)/rootdir/lib64/egl/libGLES_android.so:system/lib64/egl/libGLES_android.so
 
+PRODUCT_PACKAGES += \
+	libGLES_android \
+	gralloc.hi6210sft 
+
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/huawei/hi6210sft/kernel
@@ -131,4 +135,3 @@ PRODUCT_COPY_FILES += \
 # Zygote
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
 PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
-PRODUCT_PACKAGES += libGLES_android
