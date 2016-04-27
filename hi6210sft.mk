@@ -32,6 +32,11 @@ PRODUCT_COPY_FILES += \
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
 
+# File System
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
 # Firmware for Connectivity
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/rootdir/vendor/firmware/4343A0_001.001.034.0056.0193_ORC.hcd:system/vendor/firmware/4343A0_001.001.034.0056.0193_ORC.hcd \
