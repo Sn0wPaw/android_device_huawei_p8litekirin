@@ -28,6 +28,13 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, device/huawei/hi6210sft/system_bin.mk)
 $(call inherit-product, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
 
+# Camera
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/rootdir/etc/camera_orientation.cfg:system/etc/camera_orientation.cfg \
+	$(LOCAL_PATH)/rootdir/etc/camera_resolutions.cfg:system/etc/camera_resolutions.cfg \
+	$(LOCAL_PATH)/hi6210sft/rootdir/etc/camera_videosnapshot.cfg:system/etc/camera_videosnapshot.cfg \
+	$(LOCAL_PATH)/rootdir/etc/mobilevideocfg.xml:system/etc/mobilevideocfg.xml
+
 # Chromium, call your own blobs.
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/chromium/32/libwebviewchromium.so:system/lib/libwebviewchromium.so \
