@@ -58,7 +58,7 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/vendor/firmware/UART_CMP.bin:system/vendor/firmware/UART_CMP.bin \
         $(LOCAL_PATH)/vendor/firmware/UART_COD.bin:system/vendor/firmware/UART_COD.bin \
         $(LOCAL_PATH)/vendor/firmware/UART_RW.bin:system/vendor/firmware/UART_RW.bin \
-        $(LOCAL_PATH)/vendor/firmware/UART_TBL.bin:system/vendor/firmware/UART_TBL.bin \
+        $(LOCAL_PATH)/vendor/firmware/UART_TBL.bin:system/vendor/firmware/UART_TBL.bin
 
 # Graphics
 PRODUCT_COPY_FILES += \
