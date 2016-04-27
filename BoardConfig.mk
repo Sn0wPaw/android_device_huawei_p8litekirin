@@ -51,6 +51,10 @@ PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 # CPUSETS Feature
 ENABLE_CPUSETS := true
 
+# Device Screen
+DEVICE_SCREEN_HEIGHT := 1280
+DEVICE_SCREEN_WIDTH := 720
+
 # Hardware Acceleration
 ANDROID_ENABLE_RENDERSCRIPT := true
 BOARD_EGL_CFG := device/huawei/hi6210sft/egl.cfg
