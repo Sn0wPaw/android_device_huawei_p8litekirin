@@ -2,6 +2,12 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
+# ADB
+PRODUCT_PROPERTY_OVERRIDES += \
+         debug.sf.no_hw_vsync=1 \
+         ro.secure=0 \
+         ro.adb.secure=0
+
 # Binaries for Boot
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/isp.bin:system/sp.bin \
