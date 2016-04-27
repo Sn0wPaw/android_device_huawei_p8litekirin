@@ -20,7 +20,7 @@ PRODUCT_COPY_FILES += \
 # Codecs
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/etc/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/rootdir/etc/media_profiles.xmletc/media_profiles.xml
+	$(LOCAL_PATH)/rootdir/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # Device Path
 LOCAL_PATH := device/huawei/hi6210sft
