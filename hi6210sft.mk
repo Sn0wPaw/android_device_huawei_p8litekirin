@@ -36,7 +36,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
         $(LOCAL_PATH)/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
-        $(LOCAL_PATH)/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
+        $(LOCAL_PATH)/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf
+
+# Boot
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/boot/isp.bin:system/isp/isp.bin \
+        $(LOCAL_PATH)/boot/ons.bin:system/ons.bin
 
 # Blobs, Get non-open-source parts
 $(call inherit-product, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
@@ -102,6 +107,15 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
+# Ramdisk
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
+        $(LOCAL_PATH)/ramdisk/init.connectivity.gps.rc:root/init.connectivity.gps.rc \
+        $(LOCAL_PATH)/ramdisk/init.hi6210sft.rc:root/init.hi6210sft.rc \
+        $(LOCAL_PATH)/ramdisk/init.hi6210sft.usb.rc:root/init.hi6210sft.usb.rc \
+        $(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc
+
+# SRS
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/srs/models.txt:system/etc/srs/models.txt \
         $(LOCAL_PATH)/srs/srsmodels.lic:system/etc/srs/srsmodels.lic \
