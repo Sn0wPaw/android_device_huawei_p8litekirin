@@ -81,12 +81,12 @@ USE_OPENGL_RENDERER := true
 WITH_DEXPREOPT ?= true
 
 # Healthd
-BOARD_HAL_STATIC_LIBRARIES += libhealthd.hi6210sft
+#BOARD_HAL_STATIC_LIBRARIES += libhealthd.hi6210sft
 
 # Init
-TARGET_PROVIDES_INIT := true
-TARGET_PROVIDES_INIT_RC := true
-TARGET_UNIFIED_DEVICE := true
+#TARGET_PROVIDES_INIT := true
+#TARGET_PROVIDES_INIT_RC := true
+#TARGET_UNIFIED_DEVICE := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyAMA3,115200 androidboot.console=ttyAMA3 firmware_class.path=/system/vendor/firmware hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity androidboot.selinux=enforcing ate_enable=true
