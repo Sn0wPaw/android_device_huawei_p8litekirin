@@ -34,6 +34,7 @@ PRODUCT_COPY_FILES += \
 
 # Blobs, Get non-open-source parts
 $(call inherit-product, device/huawei/hi6210sft/system_bin.mk)
+$(call inherit-product, device/huawei/hi6210sft/system_etc_log.mk)
 $(call inherit-product, vendor/huawei/hi6210sft/hi6210sft-vendor.mk)
 
 # Bluetooth
