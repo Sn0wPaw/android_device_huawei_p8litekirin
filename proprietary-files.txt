@@ -44,6 +44,7 @@ lib/libhuaweiaudioalgoservice.so
 lib/libhuawei_mmi_test.so
 lib/libhuaweiprocessing.so
 lib/libhwaps.so
+lib/libion.so
 lib/lib_k3_ffmpeg.so
 lib/lib_k3_omx_avc.so
 lib/lib_k3_omx_avcenc.so
