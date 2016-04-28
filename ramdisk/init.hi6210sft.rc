@@ -784,10 +784,6 @@ service chr_logd /system/bin/chr_logd
     group system root bluetooth wifi
     disabled
 
-service data_cleanner /system/bin/data_cleaner
-    class core
-    oneshot
-
 service diagserver /system/bin/diagserver
     class main
     user root
@@ -886,29 +882,11 @@ service telemntncat /system/bin/dmesgcat -i /proc/telemntn -e b -r 10240 -z 3 -n
     group system
     disabled
 
-service ddrtest /system/bin/do_ddrtest
-    user root
-    disabled
-    oneshot
-
-service stop_ddrtest /system/bin/do_ddrtest
-    user root
-    disabled
-    oneshot
-
 service inputlogcat /system/bin/eventcat -lrt -k 1024 -z 8 -m 10 -f /data/android_logs/input-log
     class late_start
     user root
     group system
     disabled
-    seclabel u:r:hisilogcat:s0
-
-service fac_log_service /system/bin/factory_log_service -m 1
-    class late_start
-    user root
-    group system
-    disabled
-    oneshot
     seclabel u:r:hisilogcat:s0
 
 service gpsd /system/bin/glgps -c /data/gps/gpsconfig.xml
@@ -923,10 +901,6 @@ service hsgnss /system/bin/gnss_engine -normal
     user system
     group system inet root
     disabled
-
-service goldeneye /system/bin/goldeneye
-    class main
-    user root
 
 service gpsdaemon /system/bin/gpsdaemon
     class main
@@ -956,11 +930,6 @@ service hostapd_bin /system/bin/hostapd_hisi -d /data/misc/wifi/hostapd_hisi.con
     disabled
     oneshot
 
-service hw_cdma_service /system/bin/hw_cdmamodem_service /dev/acm_cdma_log /dev/ttySPI3 /dev/ttySPI1
-    class main
-    user root
-    disabled
-
 service hwpged /system/bin/hwpged
     class main
     socket MsgHubSock stream 0660 root system
@@ -971,10 +940,6 @@ service hwnffserver  /system/bin/hwnffserver
     socket hwnff stream 0660 root mount
 
 service ioinfoservice /system/bin/ioinfoservice
-    class main
-
-service jankservice /system/bin/jankservice
-    disabled
     class main
 
 service applogcat /system/bin/logcat -v threadtime -r4096 -z 10 -n 5 -f /data/android_logs/applogcat-log
@@ -991,19 +956,11 @@ service rillogcat /system/bin/logcat -b radio -v threadtime -r4096 -z 5 -n 5 -f 
     disabled
     seclabel u:r:hisilogcat:s0
 
-service logserver /system/bin/logserver
-    class main
-    user root
-    group system
-    oneshot
-    seclabel u:r:logserver:s0
-
 service macaddr /system/bin/mac_addr_normalization
     class core
     user root
     group root bluetooth net_bt_stack wifi
     oneshot
-
 
 service modemlogcat /system/bin/modemlogcat_lte -l
     class main
@@ -1138,10 +1095,6 @@ service p2p_supplicant /system/bin/wpa_supplicant_hisi \
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
-    oneshot
-
-service check_hota /system/bin/sh /system/etc/check_hota.sh
-    class core
     oneshot
 
 service kerneldump /system/etc/kerneldump.sh
