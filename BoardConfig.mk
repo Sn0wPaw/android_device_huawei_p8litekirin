@@ -8,6 +8,7 @@ TARGET_USES_64_BIT_BINDER := true
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := generic
 
 TARGET_2ND_ARCH := arm
@@ -18,6 +19,9 @@ TARGET_2ND_CPU_VARIANT := cortex-a15
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := true
+
+# Blobs
+-include vendor/huawei/hi6210sft/BoardConfigVendor.mk
 
 # Bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/huawei/hi6210sft/bluetooth/vnd_h60.txt
@@ -56,6 +60,18 @@ ENABLE_CPUSETS := true
 # Device Screen
 DEVICE_SCREEN_HEIGHT := 1280
 DEVICE_SCREEN_WIDTH := 720
+
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # Hardware Acceleration
 ANDROID_ENABLE_RENDERSCRIPT := true
