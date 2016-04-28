@@ -18,6 +18,14 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/etc/audio_effects.conf:system/etc/audio_effects.conf \
 	$(LOCAL_PATH)/rootdir/etc/audio_policy.conf:system/etc/audio_policy.conf
 
+# Balong's Modem
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/rootdir/etc/modemConfig/balong/basic_name:system/etc/modemConfig/balong/basic_name \
+        $(LOCAL_PATH)/rootdir/etc/modemConfig/balong/FieldTest.cfg:system/etc/modemConfig/balong/FieldTest.cfg \
+        $(LOCAL_PATH)/rootdir/etc/modemConfig/hids_ue_msg.cfg:system/etc/modemConfig/hids_ue_msg.cfg \
+        $(LOCAL_PATH)/rootdir/etc/factory_modem.cfg:system/etc/factory_modem.cfg \
+	$(LOCAL_PATH)/rootdir/etc/kerneldump.sh:system/etc/kerneldump.sh
+
 # Binaries for Boot
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/rootdir/isp.bin:system/sp.bin \
