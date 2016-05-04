@@ -46,6 +46,9 @@ TARGET_BOARD_GPU := mali-450mp
 TARGET_HARDWARE_3D := true
 USE_OPENGL_RENDERER := true
 
+# HealthD
+BOARD_HAL_STATIC_LIBRARIES += libhealthd.hi6210sft
+
 # Kernel
 BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_CMDLINE := console=ttyAMA3,115200 androidboot.console=ttyAMA3 hisi_dma_print=0 vmalloc=384M maxcpus=8 no_irq_affinity androidboot.selinux=disabled
