@@ -88,7 +88,6 @@ RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_FSTAB := device/hisi/hi6210sft/ramdisk/fstab.hi6210sft
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
 
-
 # Selinux
 BOARD_SEPOLICY_DIRS  += device/hisi/hi6210sft/sepolicy
 BOARD_SEPOLICY_UNION += file_contexts
@@ -99,4 +98,3 @@ BOARD_SEPOLICY_UNION += file_contexts
 #TW_CUSTOM_BATTERY_PATH := /sys/devices/platform/bq_bci_battery.1/power_supply/Battery
 #TW_MAX_BRIGHTNESS := 255
 #TW_NO_USB_STORAGE := true
-

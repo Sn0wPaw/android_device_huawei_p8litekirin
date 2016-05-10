@@ -16,7 +16,7 @@ PRODUCT_PACKAGES += \
     	audio.primary.default \
     	audio.r_submix.default \
     	audio.usb.default \
-	com.android.future.usb.accessory \
+	    com.android.future.usb.accessory \
     	libaudioutils \
     	libtinyalsa \
     	sound_trigger.primary.hi6210sft \
@@ -86,8 +86,8 @@ PRODUCT_COPY_FILES += \
        $(LOCAL_PATH)/rootdir/lib64/egl/libGLES_mali.so:system/lib64/egl/libGLES_mali.so
 
 PRODUCT_PACKAGES += \
-   	libGLES_android \
-   	libGLES_mali \
+		libGLES_android \
+		libGLES_mali \
     	libion \
     	gralloc.hi6210sft \
     	gatord
@@ -121,7 +121,7 @@ PRODUCT_COPY_FILES += \
 
 # ION
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/lib/libion.huawei.so:system/lib/libion.so \
+		$(LOCAL_PATH)/rootdir/lib/libion.huawei.so:system/lib/libion.so \
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
