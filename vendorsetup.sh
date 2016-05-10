@@ -1,2 +1,2 @@
-add_lunch_combo cm_p8litekirin-userdebug
-add_lunch_combo cm_p8litekirin-eng
+add_lunch_combo cm_hi6210sft-userdebug
+add_lunch_combo cm_hi6210sft-eng
