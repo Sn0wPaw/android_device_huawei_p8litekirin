@@ -54,19 +54,12 @@ TARGET_BOARD_GPU := mali-450mp
 TARGET_HARDWARE_3D := true
 USE_OPENGL_RENDERER := true
 
-# Init
-#TARGET_PROVIDES_INIT := true
-#TARGET_PROVIDES_INIT_RC := true
-
 # Kernel
 BOARD_KERNEL_BASE := 0x07478000
 BOARD_KERNEL_CMDLINE := console=ttyAMA3,115200 androidboot.console=ttyAMA3 hisi_dma_print=0 vmalloc=384M maxcpus=8 no_irq_affinity androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x02988000
 TARGET_PREBUILT_KERNEL := device/hisi/hi6210sft/kernel
-
-# Libc
-BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_huawei_symbols
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
