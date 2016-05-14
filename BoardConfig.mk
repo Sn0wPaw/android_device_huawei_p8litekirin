@@ -47,6 +47,9 @@ USE_CAMERA_STUB := true
 # Chromium
 PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
+# Common BoardConfigCommon
+-include device/hisi/hi6210sft/BoardConfigVendor.mk
+
 # Graphics
 ANDROID_ENABLE_RENDERSCRIPT := true
 BOARD_EGL_CFG := device/hisi/hi6210sft/egl.cfg
