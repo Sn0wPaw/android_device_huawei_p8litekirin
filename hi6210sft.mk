@@ -16,7 +16,7 @@ PRODUCT_PACKAGES += \
     	audio.primary.default \
     	audio.r_submix.default \
     	audio.usb.default \
-	    com.android.future.usb.accessory \
+	com.android.future.usb.accessory \
     	libaudioutils \
     	libtinyalsa \
     	sound_trigger.primary.hi6210sft \
@@ -24,31 +24,6 @@ PRODUCT_PACKAGES += \
     	tinymix \
     	tinypcminfo \
     	tinyplay
-
-# Binaries
-PRODUCT_COPY_FILES += \
-       $(LOCAL_PATH)/rootdir/bin/atcmdserver:system/bin/atcmdserver \
-       $(LOCAL_PATH)/rootdir/bin/device_monitor:system/bin/device_monitor \
-       $(LOCAL_PATH)/rootdir/bin/glgps4752:system/bin/glgps4752 \
-       $(LOCAL_PATH)/rootdir/bin/glgps4752cl:system/bin/glgps4752cl \
-       $(LOCAL_PATH)/rootdir/bin/glgps47531:system/bin/glgps47531 \
-       $(LOCAL_PATH)/rootdir/bin/glgps47531cl:system/bin/glgps47531cl \
-       $(LOCAL_PATH)/rootdir/bin/gps4752logd:system/bin/gps4752logd \
-       $(LOCAL_PATH)/rootdir/bin/gpsdaemon:system/bin/gpsdaemon \
-       $(LOCAL_PATH)/rootdir/bin/gpslogd:system/bin/gpslogd \
-       $(LOCAL_PATH)/rootdir/bin/hdbd:system/bin/hdbd \
-       $(LOCAL_PATH)/rootdir/bin/hdmi_daemon:system/bin/hdmi_daemon \
-       $(LOCAL_PATH)/rootdir/bin/hw_cdmamodem_service:system/bin/hw_cdmamodem_service \
-       $(LOCAL_PATH)/rootdir/bin/hwnff:system/bin/hwnff \
-       $(LOCAL_PATH)/rootdir/bin/hwnffserver:system/bin/hwnffserver \
-       $(LOCAL_PATH)/rootdir/bin/hwpged:system/bin/hwpged \
-       $(LOCAL_PATH)/rootdir/bin/hw_ueventd:system/bin/hw_ueventd \
-       $(LOCAL_PATH)/rootdir/bin/mac_addr_normalization:system/bin/mac_addr_normalization \
-       $(LOCAL_PATH)/rootdir/bin/mediaserver:system/bin/mediaserver \
-       $(LOCAL_PATH)/rootdir/bin/nvm_server:system/bin/nvm_server \
-       $(LOCAL_PATH)/rootdir/bin/rild:system/bin/rild \
-       $(LOCAL_PATH)/rootdir/bin/storedefaultkey:system/bin/storedefaultkey \
-       $(LOCAL_PATH)/rootdir/bin/thermal-daemon:system/bin/thermal-daemon
 
 # Blobs
 $(call inherit-product-if-exists, vendor/huawei/p8litekirin/p8litekirin-vendor.mk)
@@ -81,16 +56,10 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Graphics
-PRODUCT_COPY_FILES += \
-       $(LOCAL_PATH)/rootdir/lib64/egl/libGLES_mali.so:system/lib/egl/libGLES_mali.so \
-       $(LOCAL_PATH)/rootdir/lib64/egl/libGLES_mali.so:system/lib64/egl/libGLES_mali.so
-
 PRODUCT_PACKAGES += \
-		libGLES_android \
-		libGLES_mali \
-    	libion \
-    	gralloc.hi6210sft \
-    	gatord
+	libGLES_android \
+	libGLES_mali \
+    	gralloc.hi6210sft
 
 # Hardware-specific Deatures
 PRODUCT_COPY_FILES += \
@@ -118,10 +87,6 @@ PRODUCT_COPY_FILES += \
     	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     	frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml
-
-# ION
-PRODUCT_COPY_FILES += \
-		$(LOCAL_PATH)/rootdir/lib/libion.huawei.so:system/lib/libion.so \
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -193,13 +158,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072 \
 	ro.product.board=BalongV8R1SFT \
 
-PRODUCT_COPY_FILES += \
-       $(LOCAL_PATH)/rootdir/lib/libconfig_interface.so:system/lib/libconfig_interface.so \
-       $(LOCAL_PATH)/rootdir/lib/libhuaweiaudioalgoservice.so:system/lib/libhuaweiaudioalgoservice.so \
-       $(LOCAL_PATH)/rootdir/lib/libhuaweiaudioeffectutil.so:system/lib/libhuaweiaudioeffectutil.so \
-       $(LOCAL_PATH)/rootdir/lib/libhuaweiprocessing.so:system/lib/libhuaweiprocessing.so \
-       $(LOCAL_PATH)/rootdir/lib/libjpegenchw.so:system/lib/ibjpegenchw.so
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/hisi/hi6210sft/overlay
 
@@ -213,9 +171,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
        $(LOCAL_PATH)/ramdisk/sbin/e2fsck_s:root/sbin/e2fsck_s  \
-       $(LOCAL_PATH)/ramdisk/sbin/kmsgcat:root/sbin/kmsgcat \
-       $(LOCAL_PATH)/ramdisk/sbin/logctl_service:root/sbin/logctl_service
-
 
 # Set Default USB Interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
