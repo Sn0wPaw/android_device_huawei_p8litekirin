@@ -41,6 +41,8 @@ PRODUCT_COPY_FILES += \
        $(LOCAL_PATH)/rootdir/lib64/libwebviewchromium_loader.so:system/lib64/libwebviewchromium_loader.so \
        $(LOCAL_PATH)/rootdir/lib64/libwebviewchromium_plat_support.so:system/lib64/libwebviewchromium_plat_support.so
 
+# Common Tree
+$(call inherit-product, device/hisi/hi6210sft/hi6210sft-common.mk)
 
 # Dalvik
 $(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
