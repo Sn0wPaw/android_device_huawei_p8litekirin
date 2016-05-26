@@ -1,3 +1,11 @@
+# Android Open Source Project Common Settings
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
+# AAPt
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
 # APN
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/rootdir/etc/apns-conf.xml:system/etc/apns-conf.xml
@@ -26,6 +34,10 @@ PRODUCT_COPY_FILES += \
 # Dalvik
 $(call inherit-product-if-exists, frameworks/base/build/tablet-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/tablet-dalvik-heap.mk)
+
+# Display
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
 
 # Graphics
 PRODUCT_COPY_FILES += \
