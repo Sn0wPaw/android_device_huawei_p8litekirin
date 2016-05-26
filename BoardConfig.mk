@@ -60,12 +60,12 @@ USE_OPENGL_RENDERER := true
 
 # Kernel
 BOARD_KERNEL_BASE     := 0x07478000
-BOARD_KERNEL_CMDLINE  := console=ttyAMA3,115200 androidboot.console=ttyAMA3 androidboot.hardware=hi6210sft hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity androidboot.selinux=enforcing ate_enable=true loglevel=7 selinux=0
+BOARD_KERNEL_CMDLINE  := console=ttyAMA0,115200 androidboot.console=ttyAMA0 androidboot.hardware=hi6210sft hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity ate_enable=true loglevel=7 selinux=0
 BOARD_KERNEL_OFFSET   := 0x00008000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET  := 0x07b88000
 BOARD_TAGS_OFFSET     := 0x02988000
-TARGET_KERNEL_CONFIG := hisi_hi6210sft_defconfig
+
 TARGET_KERNEL_SOURCE := kernel/huawei/hi6210sft
 
 # Kernel Architecture
@@ -74,6 +74,13 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_USES_UNCOMPRESSED_KERNEL := true
+
+# Kernel Configs
+ifneq ($(FORCE_32_BIT),true)
+TARGET_KERNEL_CONFIG := cyanogenmod_hi6210sft_defconfig
+else
+TARGET_KERNEL_CONFIG := hisi_hi6210sft_defconfig
+endif
 
 # Kernel Modules
 BUILD_KERNEL_MODULES ?= true
@@ -120,5 +127,3 @@ BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 CONFIG_DRIVER_NL80211 := y
 CONFIG_DRIVER_WEXT :=y
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-
