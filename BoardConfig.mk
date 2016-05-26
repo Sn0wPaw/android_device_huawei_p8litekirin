@@ -52,7 +52,7 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # Graphics Rendering
 ANDROID_ENABLE_RENDERSCRIPT := true
-BOARD_EGL_CFG := device/hisi/hi6210sft/egl.cfg
+BOARD_EGL_CFG := device/hisi/hi6210sft/rootdir/lib/egl/egl.cfg
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 TARGET_BOARD_GPU := mali-450mp
 TARGET_HARDWARE_3D := true
