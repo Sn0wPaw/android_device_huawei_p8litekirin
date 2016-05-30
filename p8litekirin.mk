@@ -2,6 +2,44 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
+# Binaries
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/system/bin/bcm47531/glgps:system/bin/bcm47531/glgps \
+        $(LOCAL_PATH)/system/bin/bcm47531/gpslogd:system/bin/bcm47531/gpslogd \
+        $(LOCAL_PATH)/system/bin/agnsscontrol:system/bin/agnsscontrol \
+        $(LOCAL_PATH)/system/bin/agnsslog:system/bin/agnsslog \
+        $(LOCAL_PATH)/system/bin/akmd09911:system/bin/akmd09911 \
+        $(LOCAL_PATH)/system/bin/atcmdserver:system/bin/atcmdserver \
+        $(LOCAL_PATH)/system/bin/bastetd:system/bin/bastetd \
+        $(LOCAL_PATH)/system/bin/chargelogcat:system/bin/chargelogcat \
+        $(LOCAL_PATH)/system/bin/chr_logd:system/bin/chr_logd \
+        $(LOCAL_PATH)/system/bin/data_cleaner:system/bin/data_cleaner \
+        $(LOCAL_PATH)/system/bin/device_monitor:system/bin/device_monitor \
+        $(LOCAL_PATH)/system/bin/diagserver:system/bin/diagserver \
+        $(LOCAL_PATH)/system/bin/dmesgcat:system/bin/dmesgcat \
+        $(LOCAL_PATH)/system/bin/do_ddrtest:system/bin/do_ddrtest \
+        $(LOCAL_PATH)/system/bin/eventcat:system/bin/eventcat \
+        $(LOCAL_PATH)/system/bin/gnss_engine:system/bin/gnss_engine \
+        $(LOCAL_PATH)/system/bin/gpsdaemon:system/bin/gpsdaemon \
+        $(LOCAL_PATH)/system/bin/hi110x_dump:system/bin/hi110x_dump \
+        $(LOCAL_PATH)/system/bin/hi110x_except_logd:system/bin/hi110x_except_logd \
+        $(LOCAL_PATH)/system/bin/hi110x_logd:system/bin/hi110x_logd \
+        $(LOCAL_PATH)/system/bin/hisi_connectivity.sh:system/bin/hisi_connectivity.sh \
+        $(LOCAL_PATH)/system/bin/hostapd_hisi:system/bin/hostapd_hisi \
+        $(LOCAL_PATH)/system/bin/hwnffserver:system/bin/hwnffserver \
+        $(LOCAL_PATH)/system/bin/mac_addr_normalization:system/bin/mac_addr_normalization \
+        $(LOCAL_PATH)/system/bin/modemlogcat_lte:system/bin/modemlogcat_lte \
+        $(LOCAL_PATH)/system/bin/netd:system/bin/netd \
+        $(LOCAL_PATH)/system/bin/oam_app:system/bin/oam_app \
+        $(LOCAL_PATH)/system/bin/octty:system/bin/octty \
+        $(LOCAL_PATH)/system/bin/preparesd.sh:system/bin/preparesd.sh \
+        $(LOCAL_PATH)/system/bin/rild:system/bin/rild \
+        $(LOCAL_PATH)/system/bin/sleeplogcat:system/bin/sleeplogcat \
+        $(LOCAL_PATH)/system/bin/start_110x_service.sh:system/bin/start_110x_service.sh \
+        $(LOCAL_PATH)/system/bin/thermal-daemon:system/bin/thermal-daemon \
+        $(LOCAL_PATH)/system/bin/wpa_supplicant_hisi:system/bin/wpa_supplicant_hisi \
+        $(LOCAL_PATH)/system/xbin/watchlssd:system/xbin/watchlssd
+
 # Init
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/init/init:root/init \
@@ -15,7 +53,11 @@ LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+    	$(LOCAL_KERNEL):kernel
+
+# Kernel Dump
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/system/etc/kerneldump.sh:system/etc/kerneldump.sh
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -52,3 +94,9 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/recovery/ueventd.102173.rc:root/ueventd.102173.rc \
         $(LOCAL_PATH)/recovery/ueventd.142782.rc:root/ueventd.142782.rc \
         $(LOCAL_PATH)/recovery/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc
+
+# Sbin
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/sbin/check_root:root/sbin/check_root \
+        $(LOCAL_PATH)/sbin/logctl_service:root/sbin/logctl_service \
+        $(LOCAL_PATH)/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server
