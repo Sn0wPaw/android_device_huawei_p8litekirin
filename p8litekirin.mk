@@ -146,8 +146,8 @@ PRODUCT_COPY_FILES += \
 
 # Thermald
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/system/etc/thermald.xml
-        $(LOCAL_PATH)/system/etc/thermald_performance.xml
+        $(LOCAL_PATH)/system/etc/thermald.xml:system/etc/thermald.xml \
+        $(LOCAL_PATH)/system/etc/thermald_performance.xml:system/etc/thermald_performance.xml
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
