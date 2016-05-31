@@ -5,12 +5,9 @@ TARGET_SUPPORTS_64_BIT_APPS := true
 TARGET_USES_64_BIT_BINDER := true
 
 # Architecture
-ARCH_ARM_HAVE_NEON := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := generic
 
 TARGET_2ND_ARCH := arm
@@ -19,17 +16,21 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a15
 
+TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
+TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
+
 # Audio
 BOARD_USES_GENERIC_AUDIO := true
 
 # Blobs
-#-include vendor/hisi/hi6210sft/BoardConfigVendor.mk
+-include vendor/hisi/hi6210sft/BoardConfigVendor.mk
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := "device/huawei/p8litekirin/bluetooth"
-BOARD_BLUEDROID_VENDOR_CONF := device/huawei/p8litekirin/bluetooth/vnd_hi6210sft.txt
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
+#BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := "device/huawei/p8litekirin/bluetooth"
+#BOARD_BLUEDROID_VENDOR_CONF := device/huawei/p8litekirin/bluetooth/vnd_hi6210sft.txt
+#BOARD_HAVE_BLUETOOTH := true
+#BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Board
 BOARD_HAS_LARGE_FILESYSTEM := true
