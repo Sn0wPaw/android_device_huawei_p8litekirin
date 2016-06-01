@@ -69,6 +69,10 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/lib64/libwebviewchromium_loader.so:system/lib64/libwebviewchromium_loader.so \
         $(LOCAL_PATH)/system/lib64/libwebviewchromium_plat_support.so:system/lib64/libwebviewchromium_plat_support.so
 
+# Dalvik
+$(call inherit-product-if-exists, frameworks/base/build/tablet-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/tablet-dalvik-heap.mk)
+
 # Device Monitor
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/etc/device_state_monitor.conf:system/etc/device_state_monitor.conf
@@ -156,3 +160,21 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # USB OTG
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.isUsbOtgEnabled=true
+
+# Zygote
+PRODUCT_COPY_FILES += \
+	system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
+
+PRODUCT_PACKAGES += libGLES_android
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	 debug.sf.no_hw_vsync=1 \
+	 ro.adb.secure=0 \
+	 ro.secure=0
+         
+         
+         
+
+
