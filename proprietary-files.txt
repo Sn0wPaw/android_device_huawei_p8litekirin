@@ -1,0 +1,335 @@
+
+# ETC/Bluetooth
+etc/bluetooth/auto_pair_devlist.conf
+etc/bluetooth/bt_did.conf
+etc/bluetooth/bt_stack.conf
+etc/bluetooth/bt_stack_log.conf
+etc/bluetooth/bt_vendor.conf
+
+# ETC/DHCPCD
+etc/dhcpcd/dhcpcd.conf
+
+# ETC/GNSS
+etc/gnss/config/gnssconfig.xml
+etc/gnss/config/SUPLConfigParams.xml
+etc/gnss/lacrnc/index.bin
+etc/gnss/lacrnc/lacrnc.bin
+etc/gnss/lacrnc/mccmnc.bin
+etc/gnss/HiSilicon.p12
+etc/gnss/lss.conf
+
+# ETC/Log
+etc/log/android_panic.sh
+etc/log/audio_dump.sh
+etc/log/clean_log.sh
+etc/log/crash_notice.sh
+etc/log/dontpanic.sh
+etc/log/hifi_freeze.sh
+etc/log/mcu_exception.sh
+etc/log/modem_exception.sh
+etc/log/pmu_reboot.sh
+etc/log/prepare_dir.sh
+etc/log/reboot_history_write.sh
+etc/log/thermal_reboot.sh
+etc/log/wdg_rstlog_save.sh
+
+# ETC/Manufacture
+etc/manufacture/ALICE_TL00.xml
+etc/manufacture/ALICE_TL02.xml
+etc/manufacture/ALICE_TL21.xml
+etc/manufacture/ALICE_TL23.xml
+etc/manufacture/ALICE_UL00.xml
+etc/manufacture/cherry.xml
+etc/manufacture/chm.xml
+etc/manufacture/default.xml
+
+# ETC/modemConfig
+etc/modemConfig/balong/basic_name
+etc/modemConfig/balong/FieldTest.cfg
+etc/modemConfig/hids_ue_msg.cfg
+
+# ETC/Srs
+etc/srs/models.txt
+etc/srs/srsmodels.lic
+etc/srs/srs_processing.cfg
+
+# ETC/tp_test_parameters
+etc/tp_test_parameters/alice_junda_input_format.csv
+etc/tp_test_parameters/alice_ofilm_input_format.csv
+etc/tp_test_parameters/alice_parameters.csv
+etc/tp_test_parameters/alice_truly_input_format.csv
+
+# Libs 32 Bit
+
+# EGL
+lib/egl/libGLES_mali.so
+
+# HW
+lib/hw/audio.a2dp.default.so
+lib/hw/audio.primary.default.so
+lib/hw/audio.primary.hi6210sft.so
+lib/hw/audio.r_submix.default.so
+lib/hw/audio_policy.default.so
+lib/hw/bluetooth.default.so
+lib/hw/camera.hi6210sft.so
+lib/hw/gps.hi110x.default.so
+lib/hw/gralloc.default.so
+lib/hw/gralloc.hi6210sft.so
+lib/hw/hwcomposer.default.so
+lib/hw/hwcomposer.hi6210sft.so
+lib/hw/keystore.default.so
+lib/hw/keystore.hi6210sft.so
+lib/hw/libbcmfm_if.so
+lib/hw/libhisifm_if.so
+lib/hw/lights.default.so
+lib/hw/local_time.default.so
+lib/hw/memtrack.hi6210sft.so
+lib/hw/power.default.so
+lib/hw/sensors.hi6210sft.so
+lib/hw/vibrator.default.so
+
+# Audio
+lib/libaudioroute.so
+lib/libaudioutils.so
+lib/libaudio_custom.so
+lib/libaudioresampler.so
+lib/libaudioeffect_jni.so
+lib/libaudiopolicyservice.so
+lib/libaudioalgoservice_jni.so
+
+# Balong
+lib/libbalong-ril.so
+lib/libbalong-ril-1.so
+lib/libbalong_audio_ril.so
+
+# Camera
+lib/libcamera_core.so
+lib/libcamera_omron.so
+lib/libcamera_client.so
+lib/libcameraservice.so
+lib/libcamera_post_mediaserver.so
+
+# Huawei Drivers
+lib/libaudioflinger.huawei.so
+lib/libhuaweiaudioalgoservice.so
+lib/libservices.huawei.so
+lib/libmedia_jni.huawei.so
+lib/libmtp.huawei.so
+lib/libstagefright.huawei.so
+
+# OMX Codecs
+lib/lib_k3_ffmpeg.so
+lib/lib_k3_omx_rv.so
+lib/lib_k3_omx_avc.so
+lib/lib_k3_omxcore.so
+lib/lib_k3_omx_vc1.so
+lib/lib_k3_omx_vp8.so
+lib/lib_k3_omx_mpeg2.so
+lib/lib_k3_omx_mpeg4.so
+lib/lib_k3_omx_avcenc.so
+
+# WPA
+lib/libteec.so
+lib/libwpa_client_hisi.so
+
+# Libs 64 Bit
+
+# EGL
+lib64/egl/libGLES_mali.so
+
+# HW
+lib64/hw/audio.a2dp.default.so
+lib64/hw/audio.primary.default.so
+lib64/hw/audio.primary.hi6210sft.so
+lib64/hw/audio.r_submix.default.so
+lib64/hw/audio_policy.default.so
+lib64/hw/bastet.hi6210sft.so
+lib64/hw/camera.hi6210sft.so
+lib64/hw/gps.hi110x.default.so
+lib64/hw/gps.hi6210sft.so
+lib64/hw/gralloc.default.so
+lib64/hw/gralloc.hi6210sft.so
+lib64/hw/hwcomposer.default.so
+lib64/hw/hwcomposer.hi6210sft.so
+lib64/hw/keystore.default.so
+lib64/hw/keystore.hi6210sft.so
+lib64/hw/libbcmfm_if.so
+lib64/hw/libhisifm_if.so
+lib64/hw/lights.default.so
+lib64/hw/local_time.default.so
+lib64/hw/memtrack.hi6210sft.so
+lib64/hw/nfc_nci.pn54x.default.so
+lib64/hw/power.default.so
+lib64/hw/sensors.hi6210sft.so
+lib64/hw/vibrator.default.so
+
+# Audio
+lib64/libaudioom.so
+lib64/libaudioroute.so
+lib64/libaudioutils.so
+lib64/libaudio_custom.so
+lib64/libaudioeffect_jni.so
+lib64/libaudiopolicymanager.so
+lib64/libaudiopolicyservice.so
+lib64/libaudioalgoservice_jni.so
+lib64/libaudiopolicymanagerdefault.so
+
+# Balong
+lib64/libbalong-ril.so
+lib64/libbalong-ril-1.so
+lib64/libbalong_audio_ril.so
+
+# Camera
+lib64/libcamera_client.so
+lib64/libCameraHwParam.so
+lib64/libcameraservice.so
+lib64/libCameraHwSendCmd.so
+lib64/libcamera_metadata.so
+lib64/libCameraHwCallBack.so
+
+
+# Huawei Drivers
+lib64/libmtp.huawei.so
+lib64/libhuawei_mmi_test.so
+lib64/libservices.huawei.so
+lib64/libdrmbitmap.huawei.so
+lib64/libmedia_jni.huawei.so
+lib64/libstagefright.huawei.so
+lib64/libmediarecorder.huawei.so
+
+# OMC Codecs
+lib64/lib_k3_ffmpeg.so
+lib64/lib_k3_omx_rv.so
+lib64/lib_k3_omx_avc.so
+lib64/lib_k3_omxcore.so
+lib64/lib_k3_omx_vc1.so
+lib64/lib_k3_omx_vp8.so
+lib64/lib_k3_omx_mpeg2.so
+lib64/lib_k3_omx_mpeg4.so
+lib64/lib_k3_omx_avcenc.so
+
+# WPA
+lib64/libteec.so
+lib64/libwpa_client_hisi.so
+
+
+# USR/Keylayout
+usr/keylayout/AVRCP.kl
+usr/keylayout/Generic.kl
+usr/keylayout/qwerty.kl
+usr/keylayout/Vendor_0b05_Product_4500.kl
+usr/keylayout/Vendor_1bad_Product_f016.kl
+usr/keylayout/Vendor_1bad_Product_f023.kl
+usr/keylayout/Vendor_1bad_Product_f027.kl
+usr/keylayout/Vendor_1bad_Product_f036.kl
+usr/keylayout/Vendor_1d79_Product_0009.kl
+usr/keylayout/Vendor_05ac_Product_0239.kl
+usr/keylayout/Vendor_12bd_Product_d015.kl
+usr/keylayout/Vendor_18d1_Product_2c40.kl
+usr/keylayout/Vendor_22b8_Product_093d.kl
+usr/keylayout/Vendor_045e_Product_028e.kl
+usr/keylayout/Vendor_046d_Product_c21d.kl
+usr/keylayout/Vendor_046d_Product_c21f.kl
+usr/keylayout/Vendor_046d_Product_c216.kl
+usr/keylayout/Vendor_046d_Product_c219.kl
+usr/keylayout/Vendor_046d_Product_c294.kl
+usr/keylayout/Vendor_046d_Product_c299.kl
+usr/keylayout/Vendor_046d_Product_c532.kl
+usr/keylayout/Vendor_054c_Product_0268.kl
+usr/keylayout/Vendor_0079_Product_0011.kl
+usr/keylayout/Vendor_0583_Product_2060.kl
+usr/keylayout/Vendor_1038_Product_1412.kl
+usr/keylayout/Vendor_1689_Product_fd00.kl
+usr/keylayout/Vendor_1689_Product_fd01.kl
+usr/keylayout/Vendor_1689_Product_fe00.kl
+usr/keylayout/Vendor_1949_Product_0401.kl
+usr/keylayout/Vendor_2378_Product_100a.kl
+usr/keylayout/Vendor_2378_Product_1008.kl
+
+# USR/SREC
+usr/srec/en-US/c_fst
+usr/srec/en-US/clg
+usr/srec/en-US/commands.abnf
+usr/srec/en-US/compile_grammar.config
+usr/srec/en-US/contacts.abnf
+usr/srec/en-US/dict
+usr/srec/en-US/dictation.config
+usr/srec/en-US/dnn
+usr/srec/en-US/endpointer_dictation.config
+usr/srec/en-US/endpointer_voicesearch.config
+usr/srec/en-US/ep_acoustic_model
+usr/srec/en-US/g2p_fst
+usr/srec/en-US/grammar.config
+usr/srec/en-US/hclg_shotword
+usr/srec/en-US/hmmlist
+usr/srec/en-US/hmm_symbols
+usr/srec/en-US/hotword.config
+usr/srec/en-US/hotword_classifier
+usr/srec/en-US/hotword_normalizer
+usr/srec/en-US/hotword_prompt.txt
+usr/srec/en-US/hotword_word_symbols
+usr/srec/en-US/metadata
+usr/srec/en-US/normalizer
+usr/srec/en-US/norm_fst
+usr/srec/en-US/offensive_word_normalizer
+usr/srec/en-US/phonelist
+usr/srec/en-US/phone_state_map
+usr/srec/en-US/rescoring_lm
+usr/srec/en-US/wordlist
+
+# VENDOR/ETC/ 
+vendor/etc/audio_effects.conf
+
+# VENDOR/Firmware
+vendor/firmware/4343A0_001.001.034.0056.0193_ORC.hcd
+vendor/firmware/BCM4334B0_002.001.013.1554.1613_RC.hcd
+vendor/firmware/fw_bcm4343s_apsta_hw.bin
+vendor/firmware/fw_bcm4343s_hw.bin
+vendor/firmware/fw_bcm4343s_p2p_hw.bin
+vendor/firmware/fw_bcm4343s_test_hw_apsta.bin
+vendor/firmware/GNSS.bin
+vendor/firmware/libpn547_fw.so
+vendor/firmware/nvram4343s_hw.txt
+vendor/firmware/nvram_CHERRY_PLUS_TL00.txt
+vendor/firmware/nvram_CHERRY_PLUS_TL20M.txt
+vendor/firmware/nvram_CHERRY_PLUS_UL00.txt
+vendor/firmware/sdio_cfg
+vendor/firmware/SDIO_CMP.bin
+vendor/firmware/SDIO_COD.bin
+vendor/firmware/SDIO_RW.bin
+vendor/firmware/SDIO_RW_ALICE_TL00_FEM.bin
+vendor/firmware/SDIO_RW_ALICE_TL02_FEM.bin
+vendor/firmware/SDIO_RW_ALICE_TL21_FEM.bin
+vendor/firmware/SDIO_RW_ALICE_TL23_FEM.bin
+vendor/firmware/SDIO_RW_ALICE_UL00_FEM.bin
+vendor/firmware/SDIO_RW_Certification_Alice_FEM.bin
+vendor/firmware/SDIO_RW_Certification_CHM_FEM.bin
+vendor/firmware/SDIO_RW_CHC_U03_FEM.bin
+vendor/firmware/SDIO_RW_CHM_TL00_FEM.bin
+vendor/firmware/SDIO_RW_CHM_TL00H_FEM.bin
+vendor/firmware/SDIO_RW_CHM_U01_FEM.bin
+vendor/firmware/SDIO_RW_CHM_U23_FEM.bin
+vendor/firmware/SDIO_RW_CHM_UL00_FEM.bin
+vendor/firmware/SDIO_TBL.bin
+vendor/firmware/uart_cfg
+vendor/firmware/UART_CMP.bin
+vendor/firmware/UART_COD.bin
+vendor/firmware/UART_RW.bin
+vendor/firmware/UART_TBL.bin
+
+# VENDOR/Lib
+vendor/lib/libbt-vendor.so
+vendor/lib/libbt-vendor-hi110x.so
+vendor/lib/libee_core.so
+vendor/lib/libee_support.so
+vendor/lib/libexticonv.so
+vendor/lib/libposclientcore.so
+vendor/lib/libslpgw-single.so
+vendor/lib/libstlport_shared_rtti.so
+vendor/lib/libsupl.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+
+# VENDOR/Lib64
+vendor/lib64/libbt-vendor-hi110x.so
