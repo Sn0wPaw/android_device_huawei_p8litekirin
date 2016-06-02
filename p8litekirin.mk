@@ -26,13 +26,18 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/bin/eventcat:system/bin/eventcat \
         $(LOCAL_PATH)/system/bin/gnss_engine:system/bin/gnss_engine \
         $(LOCAL_PATH)/system/bin/gpsdaemon:system/bin/gpsdaemon \
+        $(LOCAL_PATH)/system/bin/hdb:system/bin/hdb \
         $(LOCAL_PATH)/system/bin/hi110x_dump:system/bin/hi110x_dump \
         $(LOCAL_PATH)/system/bin/hi110x_except_logd:system/bin/hi110x_except_logd \
         $(LOCAL_PATH)/system/bin/hi110x_logd:system/bin/hi110x_logd \
         $(LOCAL_PATH)/system/bin/hisi_connectivity.sh:system/bin/hisi_connectivity.sh \
         $(LOCAL_PATH)/system/bin/hostapd_hisi:system/bin/hostapd_hisi \
+        $(LOCAL_PATH)/system/bin/hwnff:system/bin/hwnff \
         $(LOCAL_PATH)/system/bin/hwnffserver:system/bin/hwnffserver \
+        $(LOCAL_PATH)/system/bin/hwpged:system/bin/hwpged \
+        $(LOCAL_PATH)/system/bin/hw_ueventd:system/bin/hw_ueventd \
         $(LOCAL_PATH)/system/bin/mac_addr_normalization:system/bin/mac_addr_normalization \
+        $(LOCAL_PATH)/system/bin/mediaserver:system/bin/mediaserver \
         $(LOCAL_PATH)/system/bin/modemlogcat_lte:system/bin/modemlogcat_lte \
         $(LOCAL_PATH)/system/bin/netd:system/bin/netd \
         $(LOCAL_PATH)/system/bin/oam_app:system/bin/oam_app \
@@ -44,6 +49,12 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/bin/thermal-daemon:system/bin/thermal-daemon \
         $(LOCAL_PATH)/system/bin/wpa_supplicant_hisi:system/bin/wpa_supplicant_hisi \
         $(LOCAL_PATH)/system/xbin/watchlssd:system/xbin/watchlssd
+
+# Blobs
+$(call inherit-product, vendor/hisi/hi6210sft/hi6210sft-vendor.mk)
+
+# Bluetooth
+
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -73,24 +84,40 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, frameworks/base/build/tablet-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/tablet-dalvik-heap.mk)
 
+# Display
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
 # Device Monitor
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/etc/device_state_monitor.conf:system/etc/device_state_monitor.conf
 
 # GPS
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/etc/goldeneye_config.xml:system/etc/goldeneye_config.xml \
         $(LOCAL_PATH)/system/etc/gps.conf:system/etc/gps.conf \
         $(LOCAL_PATH)/system/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
         $(LOCAL_PATH)/system/etc/hisi_cfg.ini:system/etc/hisi_cfg.ini \
         $(LOCAL_PATH)/system/etc/hisi_cfg_alice.ini:system/etc/hisi_cfg_alice.ini \
-        $(LOCAL_PATH)/system/etc/hisi_cfg_cherry.ini:system/etc/hisi_cfg_cherry.ini \
+        $(LOCAL_PATH)/system/etc/hisi_cfg_cherry.ini:system/etc/hisi_cfg_cherry.ini
 
+# File System
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs \
+    com.android.future.usb.accessory
 
-# Init
-PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/init/init:root/init \
-        $(LOCAL_PATH)/init/init.rc:root/init.rc
+# Graphics
+PRODUCT_PACKAGES += \
+	libGLES_mali
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.hwui.render_dirty_regions=false \
+    	ro.opengles.version=131072 \
+	persist.sys.strictmode.disable=1 \
+    	persist.sys.use_dithering=2
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -106,47 +133,70 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/system/etc/kerneldump.sh:system/etc/kerneldump.sh
 
+# Lights
+PRODUCT_PACKAGES += \
+    	lights.default
+
+# Misc
+PRODUCT_PACKAGES += \
+	bt_vendor.conf \
+	dhcpcd \
+	hostapd_hisi.conf \
+	oam_app \
+	octty \
+	wpa_cli_hisi \
+	wpa_supplicant.conf \
+	wpa_supplicant_hisi \
+ 	wpa_supplicant_hisi.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	android.webview.force_aosp=false \
+	fw.appops.sys_app=true \
+	hw.lcd.lcd_density=320 \
+	ro.com.google.locationfeatures=1 \
+    	ro.config.sync=yes \
+	ro.config.ntp.clock_sync=1800000 \
+    	ro.config.ntp.server_poll=86400000 \
+    	ro.config.ntp.sync_mode=3 \
+    	ro.sf.lcd_density=320 \
+    	ro.setupwizard.mode=OPTIONAL \
+    	ro.setupwizard.enable_bypass=1
+
+# Modules
+PRODUCT_PACKAGES += \
+	hwcomposer.hi6210sft \
+	gralloc.hi6210sft
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/ramdisk/init.5801.rc:root/init.5801.rc \
-        $(LOCAL_PATH)/ramdisk/init.6165.rc:root/init.6165.rc \
-        $(LOCAL_PATH)/ramdisk/init.10106.rc:root/init.10106.rc \
-        $(LOCAL_PATH)/ramdisk/init.51054.rc:root/init.51054.rc \
-        $(LOCAL_PATH)/ramdisk/init.102173.rc:root/init.102173.rc \
-        $(LOCAL_PATH)/ramdisk/init.142782.rc:root/init.142782.rc \
-        $(LOCAL_PATH)/ramdisk/init.audio.rc:root/init.audio.rc \
-        $(LOCAL_PATH)/ramdisk/init.chip.usb.rc:root/init.chip.usb.rc \
-        $(LOCAL_PATH)/ramdisk/init.connectivity.bcm43xx.rc:root/init.connectivity.bcm43xx.rc \
-        $(LOCAL_PATH)/ramdisk/init.connectivity.hi110x.rc:root/init.connectivity.hi110x.rc \
-        $(LOCAL_PATH)/ramdisk/init.connectivity.rc:root/init.connectivity.rc \
-        $(LOCAL_PATH)/ramdisk/init.device.rc:root/init.device.rc \
-        $(LOCAL_PATH)/ramdisk/init.extmodem.rc:root/init.extmodem.rc \
-        $(LOCAL_PATH)/ramdisk/init.hi6210sft.rc:root/init.hi6210sft.rc \
-        $(LOCAL_PATH)/ramdisk/init.hisi.rc:root/init.hisi.rc \
-        $(LOCAL_PATH)/ramdisk/init.manufacture.rc:root/init.manufacture.rc \
-        $(LOCAL_PATH)/ramdisk/init.performance.rc:root/init.performance.rc \
-        $(LOCAL_PATH)/ramdisk/init.platform.rc:root/init.platform.rc \
-        $(LOCAL_PATH)/ramdisk/init.protocol.rc:root/init.protocol.rc \
-        $(LOCAL_PATH)/ramdisk/init.tee.rc:root/init.tee.rc
-
-# Recovery
-PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/recovery/fstab.hi6210sft:root/fstab.hi6210sft \
-        $(LOCAL_PATH)/recovery/init.recovery.hi110x.rc:root/init.recovery.hi110x.rc \
-        $(LOCAL_PATH)/recovery/init.recovery.hi6210sft.rc:root/init.recovery.hi6210sft.rc \
-        $(LOCAL_PATH)/recovery/ueventd.5801.rc:root/ueventd.5801.rc \
-        $(LOCAL_PATH)/recovery/ueventd.6165.rc:root/ueventd.6165.rc \
-        $(LOCAL_PATH)/recovery/ueventd.10106.rc:root/ueventd.10106.rc \
-        $(LOCAL_PATH)/recovery/ueventd.51054.rc:root/ueventd.51054.rc \
-        $(LOCAL_PATH)/recovery/ueventd.102173.rc:root/ueventd.102173.rc \
-        $(LOCAL_PATH)/recovery/ueventd.142782.rc:root/ueventd.142782.rc \
-        $(LOCAL_PATH)/recovery/ueventd.hi6210sft.rc:root/ueventd.hi6210sft.rc
-
-# Sbin
-PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/sbin/check_root:root/sbin/check_root \
-        $(LOCAL_PATH)/sbin/logctl_service:root/sbin/logctl_service \
-        $(LOCAL_PATH)/sbin/oeminfo_nvm_server:root/sbin/oeminfo_nvm_server
+        $(LOCAL_PATH)/ramdisk/fstab.hi6210sft:root/fstab.hi6210sft \
+        $(LOCAL_PATH)/ramdisk/init.hi6210sft.rc::root/init.hi6210sft.rc \
+        $(LOCAL_PATH)/ramdisk/init.recovery.hi110x.rc::root/init.recovery.hi110x.rc \
+        $(LOCAL_PATH)/ramdisk/init.recovery.hi6210sft.rc::root/init.recovery.hi6210sft.rc \
+        $(LOCAL_PATH)/ramdisk/ueventd.hi6210sft.rc::root/ueventd.hi6210sft.rc
 
 # Thermald
 PRODUCT_COPY_FILES += \
@@ -172,9 +222,4 @@ PRODUCT_PACKAGES += libGLES_android
 PRODUCT_PROPERTY_OVERRIDES += \
 	 debug.sf.no_hw_vsync=1 \
 	 ro.adb.secure=0 \
-	 ro.secure=0
-         
-         
-         
-
-
+	 ro.secure=0                

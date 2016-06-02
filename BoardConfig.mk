@@ -21,6 +21,7 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon-vfpv4 -mtune=cortex-a15 -mfloat-abi=softfp
 TARGET_EXTRA_CFLAGS := -mtune=cortex-a15 -mcpu=cortex-a15
 
 # Audio
+BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_GENERIC_AUDIO := true
 
 # Blobs
@@ -29,7 +30,6 @@ BOARD_USES_GENERIC_AUDIO := true
 # Bluetooth
 #BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := "device/huawei/p8litekirin/bluetooth"
 #BOARD_BLUEDROID_VENDOR_CONF := device/huawei/p8litekirin/bluetooth/vnd_hi6210sft.txt
-#BOARD_HAVE_BLUETOOTH := true
 #BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Board
@@ -72,7 +72,7 @@ TARGET_HARDWARE_3D := true
 USE_OPENGL_RENDERER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity androidboot.selinux=disabled ate_enable=true loglevel=7 androidboot.hardware=hi6210sft selinux=0
+BOARD_KERNEL_CMDLINE := hisi_dma_print=0 vmalloc=384M maxcpus=8 coherent_pool=512K no_irq_affinity androidboot.selinux=disabled ate_enable=true
 
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_BASE     := 0x07478000
@@ -83,7 +83,11 @@ BOARD_TAGS_OFFSET     := 0x02988000
 BOARD_MKBOOTIMG_ARGS += --kernel_offset "$(BOARD_KERNEL_OFFSET)"
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset "$(BOARD_RAMDISK_OFFSET)"
 BOARD_MKBOOTIMG_ARGS += --tags_offset "$(BOARD_TAGS_OFFSET)"
+
 TARGET_PREBUILT_KERNEL := device/huawei/p8litekirin/kernel
+
+# LibC
+BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_huawei_symbols
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
@@ -102,5 +106,19 @@ DEVICE_RESOLUTION := 720x1280
 RECOVERY_FSTAB_VERSION := 2
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
-TARGET_RECOVERY_FSTAB := device/huawei/p8litekirin/recovery/fstab.hi6210sft
+TARGET_RECOVERY_FSTAB := device/huawei/p8litekirin/ramdisk/fstab.hi6210sft
 TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
+
+# Wifi
+BOARD_WLAN_DEVICE                := bcmdhd
+BOARD_WLAN_DEVICE_REV            := bcm4343
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA          := "/system/vendor/firmware/fw_bcm4343s_hw.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/vendor/firmware/fw_bcm4343s_apsta_hw.bin"
+WIFI_DRIVER_FW_PATH_P2P          := "/system/vendor/firmware/fw_bcm4343s_p2p_hw.bin"
+WIFI_BAND                        := 802_11_ABG
